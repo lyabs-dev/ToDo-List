@@ -5,7 +5,7 @@ const supportedLanguages = ['en'];
 
 /// PAGES
 const pageHome = '/';
-
+const pageSignIn = '/SignIn';
 const fieldStatusCode = 'status_code';
 
 //SHARED PREFERENCES
@@ -30,6 +30,7 @@ const int buttonColorHex = 0XFF200E32;
 const Color colorPrimary = Color(colorHex);
 const Color colorSecondary = Color(colorHexSecondary);
 const Color buttonColor = Color(buttonColorHex);
+const Color colorPrimaryLight = Color(0XFF615B8C);
 const Color colorBlack = Color(0XFF130B07);
 const Color colorWhite = Color(0XFFFFFFFF);
 

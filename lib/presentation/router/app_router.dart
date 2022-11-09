@@ -9,7 +9,10 @@ class AppRouter {
 
     switch (settings.name) {
       case pageHome:
-        page = const HomePage();
+        page = const WelcomePage();
+        break;
+      case pageSignIn:
+        page = const SignIn();
         break;
       default:
     }
