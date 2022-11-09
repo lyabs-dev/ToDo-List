@@ -19,6 +19,9 @@ const argumentIsNOAnimation = 'is_no_animation';
 const settingIsDarkMode = 'is_dark_mode';
 const settingLanguage = 'language';
 
+///FONTS
+const poppins = "Poppins";
+
 /// COLORS
 const int colorHex = 0XFFD4946C;
 
