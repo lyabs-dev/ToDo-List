@@ -1,96 +1,77 @@
-
-import 'package:flutter_structure/presentation/components/my_text.dart';
 import 'package:flutter_structure/utils/my_material.dart';
 
-class AppButton extends StatefulWidget {
-
-  final String? text, icon, iconWhite;
+class AppButton extends StatelessWidget {
+  final String? text;
+  final Widget? icon;
   final Function onPressed;
   final FontWeight? textFontWeight;
-  final double fontSize, borderRadius, paddingHorizontal, paddingVertical;
-  final Color primaryColor, textColor;
+  final double? fontSize,
+      borderRadius,
+      paddingHorizontal,
+      paddingVertical;
+  final Color primaryColor, textColor,highlightColor;
   final bool whitIcons;
 
-  const AppButton(this.text, this.onPressed,
+   AppButton(this.text, this.onPressed,
       {Key? key,
-      this.primaryColor = colorPrimary,
-      this.textColor = colorWhite,
-      this.fontSize = textSizeSMedium,
-      this.borderRadius = 15,
-      this.textFontWeight,
-      this.icon,
-      this.iconWhite,
-      this.paddingHorizontal = 15.0,
-      this.paddingVertical = 8.0,
-      this.whitIcons = false})
+        this.primaryColor = colorPrimary,
+        this.textColor = colorWhite,
+        this.fontSize = textSizeMedium,
+        this.borderRadius = 10,
+        this.textFontWeight,
+        this.highlightColor: colorPrimaryLight,
+        this.icon,
+        this.paddingHorizontal = 15.0,
+        this.paddingVertical = 14.0,
+        this.whitIcons = false})
       : super(key: key);
 
-  @override
-  State<AppButton> createState() => _AppButtonState();
-}
 
-class _AppButtonState extends State<AppButton> {
-  bool _reaction = false;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       customBorder:
-          RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-      onTap: () => widget.onPressed(),
-      onTapDown: (tDown) {
-        setState(() {
-          _reaction = true;
-        });
-      },
-      onTapUp: (tUp) {
-        setState(() {
-          _reaction = false;
-        });
-      },
-      highlightColor: _reaction
-          ? colorPrimary.withOpacity(0.30)
-          : colorWhite.withOpacity(0.30),
+      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+      onTap: () => onPressed(),
+      highlightColor: colorPrimaryLight,
       hoverColor: colorWhite,
-      child: Container(
+      child: Ink(
+      //  width: getProportionateScreenWidth(width!, context),
         decoration: BoxDecoration(
-          color: _reaction ? colorPrimary : widget.primaryColor,
-          borderRadius: BorderRadius.all(Radius.circular(widget.borderRadius)),
-        ),
+            color: primaryColor,
+            borderRadius:
+            BorderRadius.all(Radius.circular(borderRadius!))),
         padding: EdgeInsets.symmetric(
-            horizontal: widget.paddingHorizontal,
-            vertical: widget.paddingVertical),
-        child: widget.whitIcons
+            horizontal:paddingHorizontal!,
+            vertical:
+            getProportionateScreenHeight(paddingVertical!, context)),
+        child: whitIcons
             ? Row(
-                children: [
-                  Image(
-                    image: AssetImage(
-                        _reaction ? widget.iconWhite! : widget.icon!),
-                    filterQuality: FilterQuality.high,
-                    height: 25,
-                  ),
-                  SizedBox(
-                    width: getShortSize(5),
-                  ),
-                  Expanded(
-                    child: MyText(
-                      widget.text!,
-                      style: TextStyle(
-                        fontSize: widget.fontSize,
-                        color: _reaction ? colorWhite : widget.textColor,
-                        fontWeight: widget.textFontWeight ?? FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                ],
-              )
-            : MyText(
-                widget.text!,
-                style: TextStyle(
-                  fontSize:widget.fontSize,
-                  color: _reaction ? colorWhite : widget.textColor,
-                  fontWeight: widget.textFontWeight ?? FontWeight.w600,
-                ),
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            SizedBox.shrink(),
+            Text(
+             text!,
+              style: TextStyle(
+                fontSize: getProportionateScreenWidth(fontSize!, context),
+                color: textColor,
+                fontWeight: textFontWeight ?? FontWeight.w600,
               ),
+            ),
+           icon!,
+          ],
+        )
+            : Text(
+          text!,
+          textAlign: TextAlign.center,
+          style: TextStyle(
+            fontSize:getProportionateScreenWidth(fontSize!, context) ,
+
+            color:
+            textColor,
+            fontWeight:textFontWeight ?? FontWeight.w600,
+          ),
+        ),
       ),
     );
   }
