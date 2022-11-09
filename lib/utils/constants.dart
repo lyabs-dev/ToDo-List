@@ -23,9 +23,13 @@ const settingLanguage = 'language';
 const poppins = "Poppins";
 
 /// COLORS
-const int colorHex = 0XFFD4946C;
+const int colorHex = 0XFF2A2362;
+const int colorHexSecondary = 0XFFFF6B6B;
+const int buttonColorHex = 0XFF200E32;
 
 const Color colorPrimary = Color(colorHex);
+const Color colorSecondary = Color(colorHexSecondary);
+const Color buttonColor = Color(buttonColorHex);
 const Color colorBlack = Color(0XFF130B07);
 const Color colorWhite = Color(0XFFFFFFFF);
 
