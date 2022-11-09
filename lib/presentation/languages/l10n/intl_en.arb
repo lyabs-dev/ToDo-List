@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "appTitle": "ToDo List",
+  "errorOccurred": "Error Occurred",
+  "somethingWentWrong": "Something went wrong",
+  "warning": "Warning",
+  "error": "Error",
+  "success": "Success",
+  "info_": "Info",
+  "confirm": "Confirm",
+  "tryAgain": "Try Again",
+  "done": "Done",
+  "ok": "Ok",
+  "view": "View"
+}
