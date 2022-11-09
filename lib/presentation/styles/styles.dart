@@ -4,13 +4,15 @@ import 'package:flutter_structure/utils/constants.dart';
 final darkTheme = ThemeData(
     primarySwatch: SwatchColor.color,
     primaryColor: colorPrimary,
-    brightness: Brightness.dark
+    brightness: Brightness.dark,
+    fontFamily: poppins
 );
 
 final lightTheme = ThemeData(
     primarySwatch: SwatchColor.color,
     primaryColor: colorPrimary,
-    brightness: Brightness.light
+    brightness: Brightness.light,
+    fontFamily: poppins
 );
 
 class SwatchColor {
