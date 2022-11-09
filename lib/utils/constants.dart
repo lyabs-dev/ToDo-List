@@ -46,3 +46,14 @@ const textSizeXXXLarge = 52.0;
 
 /// NOTIFICATIONS
 const fieldNotificationType = 'type';
+
+///PADDING
+const paddingSmall = 12.0;
+const paddingSMedium = 14.0;
+const paddingMedium = 17.0;
+const paddingLargeMedium = 20.0;
+const paddingNormal = 24.0;
+const paddingLarge = 30.0;
+const paddingXLarge = 35.0;
+const paddingXXLarge = 45.0;
+const paddingXXXLarge = 52.0;
