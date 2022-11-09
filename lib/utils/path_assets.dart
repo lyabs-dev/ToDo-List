@@ -1,5 +1,5 @@
 class PathImage{
-  static String logo = "assets/images/logo.jpg";
+  static String logo = "assets/images/logo.png";
 }
 
 class PathIcons{
