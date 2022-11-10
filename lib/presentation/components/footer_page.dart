@@ -13,7 +13,9 @@ class FooterPage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.of(context).pushNamed(pageHome);
+              },
               child: MyText(
                   signUp
                       ? AppLocalizations.of(context)!.signUp
