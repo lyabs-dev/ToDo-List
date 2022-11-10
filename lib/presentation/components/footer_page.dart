@@ -52,30 +52,8 @@ class FooterPage extends StatelessWidget {
           height: getShortSize(5, context),
         ),
         Align(
-          alignment: Alignment.bottomRight,
-          child: InkWell(
-            onTap: () {},
-            child: Container(
-              height: 50,
-              width: 50,
-              padding: EdgeInsets.all(paddingSmall),
-              decoration: BoxDecoration(
-                  color: buttonColor, borderRadius: BorderRadius.circular(20)),
-              child: Container(
-                height: 25,
-                width: 25,
-                decoration:
-                    BoxDecoration(color: colorWhite, shape: BoxShape.circle),
-                child: Center(
-                  child: Icon(
-                    Icons.arrow_forward,
-                    color: colorPrimary,
-                  ),
-                ),
-              ),
-            ),
-          ),
-        )
+            alignment: Alignment.bottomRight,
+            child: CircleButton(Icons.arrow_forward, () {}, iconColor: colorPrimary,))
       ],
     );
   }
