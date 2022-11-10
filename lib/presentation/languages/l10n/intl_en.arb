@@ -13,5 +13,10 @@
   "ok": "Ok",
   "view": "View",
   "createYour":"Create your \nnotes \neasily",
-  "getStarted": "Get Started"
+  "getStarted": "Get Started",
+  "welcomeBack":"Welcome Back",
+  "email":"Email",
+  "Password": "Password",
+  "signIn": "Sign In",
+  "signUp": "Sign Up"
 }
