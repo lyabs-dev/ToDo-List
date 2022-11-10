@@ -4,9 +4,10 @@ const langCodeDefault = 'en';
 const supportedLanguages = ['en'];
 
 /// PAGES
-const pageHome = '/';
+const pageWelcome = '/';
 const pageSignIn = '/SignIn';
 const pageSignUp = '/SignUp';
+const pageHome = '/Home';
 const fieldStatusCode = 'status_code';
 
 //SHARED PREFERENCES

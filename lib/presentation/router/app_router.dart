@@ -1,5 +1,4 @@
 import 'package:flutter_structure/presentation/router/no_animation_route.dart';
-import 'package:flutter_structure/presentation/screens/sign_up/sign_up.dart';
 import 'package:flutter_structure/utils/my_material.dart';
 
 class AppRouter {
@@ -9,8 +8,11 @@ class AppRouter {
     Widget? page;
 
     switch (settings.name) {
-      case pageHome:
+      case pageWelcome:
         page = const WelcomePage();
+        break;
+      case pageHome:
+        page = const Home();
         break;
       case pageSignIn:
         page = const SignIn();
