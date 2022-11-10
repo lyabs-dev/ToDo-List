@@ -19,7 +19,9 @@ class WelcomePageState extends State<WelcomePage> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: getShortSize(50, context) ,),
+          SizedBox(
+            height: getShortSize(50, context),
+          ),
           MyText(AppLocalizations.of(context)!.createYour,
               style: TextStyle(
                   color: colorWhite,
@@ -27,24 +29,49 @@ class WelcomePageState extends State<WelcomePage> {
                   fontSize:
                       getProportionateScreenWidth(textSizeXXLarge, context),
                   fontWeight: FontWeight.w900)),
-          AppButton(
-            AppLocalizations.of(context)!.getStarted,
-            () {
-              Navigator.of(context).pushNamed(pageSignIn);
-            },
-            whitIcons: true,
-            primaryColor: colorSecondary,
-            borderRadius: 30,
-            paddingVertical: 10,
-            fontSize: textSizeNormal,
-            icon: Container(
-              height: 35,
-              width: 35,
-              padding: EdgeInsets.all(5),
-              decoration: BoxDecoration(
-                color: colorWhite,shape: BoxShape.circle
-              ),
-              child: Icon(Icons.arrow_forward, color: colorSecondary,size: 20,),
+          Material(
+            color: Colors.transparent,
+            child: InkWell(
+              customBorder: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(40)),
+              onTap: () {
+                Navigator.of(context).pushNamed(pageSignIn);
+              },
+              highlightColor: colorPrimaryLight,
+              hoverColor: colorWhite,
+              child: Ink(
+                  //  width: getProportionateScreenWidth(width!, context),
+                  decoration: BoxDecoration(
+                      color: colorSecondary,
+                      borderRadius: BorderRadius.all(Radius.circular(40))),
+                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SizedBox.shrink(),
+                      Text(
+                        AppLocalizations.of(context)!.getStarted,
+                        style: TextStyle(
+                          fontSize: getProportionateScreenWidth(
+                              textSizeNormal, context),
+                          color: colorWhite,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Container(
+                        height: 37,
+                        width: 37,
+                        padding: EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            color: colorWhite, shape: BoxShape.circle),
+                        child: Icon(
+                          Icons.arrow_forward,
+                          color: colorSecondary,
+                          size: 20,
+                        ),
+                      ),
+                    ],
+                  )),
             ),
           ),
           Align(
