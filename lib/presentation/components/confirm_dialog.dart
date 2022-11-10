@@ -49,7 +49,7 @@ class ConfirmDialog extends StatelessWidget {
                 () {
                   Navigator.of(context).pop(false);
                 },
-                height: 35,
+
               ),
               SizedBox(
                 width: getShortSize(10,context),
@@ -59,7 +59,6 @@ class ConfirmDialog extends StatelessWidget {
                 () {
                   Navigator.of(context).pop(true);
                 },
-                height: 35,
               )
             ],
           ),
