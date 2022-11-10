@@ -30,6 +30,7 @@ class AppButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
+      color: Colors.transparent,
       child: InkWell(
         customBorder:
         RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
@@ -49,8 +50,7 @@ class AppButton extends StatelessWidget {
           child: whitIcons
               ? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox.shrink(),
+            children: [ icon!,
               Text(
                text!,
                 style: TextStyle(
@@ -59,7 +59,7 @@ class AppButton extends StatelessWidget {
                   fontWeight: textFontWeight ?? FontWeight.w600,
                 ),
               ),
-             icon!,
+
             ],
           )
               : Text(
