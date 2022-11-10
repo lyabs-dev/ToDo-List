@@ -33,7 +33,7 @@ class SignIn extends StatelessWidget {
                               color: colorPrimary,
                               fontFamily: poppins,
                               fontSize: getProportionateScreenWidth(
-                                  paddingXXXLarge, context),
+                                  textSizeXXLarge, context),
                               fontWeight: FontWeight.w900)),
                       FieldSignIn(),
                       FooterPage()

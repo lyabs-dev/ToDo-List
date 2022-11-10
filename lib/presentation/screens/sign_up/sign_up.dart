@@ -32,7 +32,7 @@ class SignUp extends StatelessWidget {
                             color: colorWhite,
                             fontFamily: poppins,
                             fontSize:
-                                getProportionateScreenWidth(paddingXXXLarge, context),
+                                getProportionateScreenWidth(paddingXXLarge, context),
                             fontWeight: FontWeight.w900)),
                     FieldSignUp(),
                     FooterPage(signUp: true,)
