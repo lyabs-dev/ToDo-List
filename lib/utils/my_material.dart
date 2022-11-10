@@ -8,6 +8,9 @@ export 'package:flutter_gen/gen_l10n/app_localizations.dart';
 export 'package:flutter_structure/presentation/components/app_button.dart';
 export 'package:flutter_structure/presentation/components/my_text.dart';
 export 'package:flutter_structure/presentation/components/scaffold_color.dart';
+export 'package:flutter_structure/presentation/components/app_edit_text.dart';
+export 'package:flutter_structure/presentation/components/footer_page.dart';
+
 
 //utils
 export 'package:flutter_structure/utils/path_assets.dart';
