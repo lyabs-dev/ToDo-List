@@ -1,4 +1,3 @@
-
 import 'package:flutter_structure/utils/my_material.dart';
 
 class CircleButton extends StatefulWidget {
@@ -6,15 +5,18 @@ class CircleButton extends StatefulWidget {
   final Function onPressed;
   final FontWeight? textFontWeight;
   final IconData? icon;
-  final double size, height;
-  final Color primaryColor, iconColor;
+  final double size, heightFirthCircle,heightSecondCircle;
+  final Color primaryColor, iconColor,firthReaction,secondReaction;
 
   const CircleButton(this.icon, this.onPressed,
       {Key? key,
-        this.primaryColor = colorPrimary,
+        this.primaryColor = buttonColor,
         this.iconColor = colorWhite,
         this.size = textSizeNormal,
-        this.height = 50,
+        this.firthReaction = colorSecondary,
+        this.secondReaction = buttonColor,
+        this.heightFirthCircle = 50,
+        this.heightSecondCircle = 25,
         this.textFontWeight
       })
       : super(key: key);
@@ -29,7 +31,6 @@ class _CircleButtonState extends State<CircleButton> {
   Widget build(BuildContext context) {
     return InkWell(
       customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-      onTap: () => widget.onPressed(),
       onTapDown: (tDown) {
         setState(() {
           _reaction = true;
@@ -40,15 +41,25 @@ class _CircleButtonState extends State<CircleButton> {
           _reaction = false;
         });
       },
+      onTap: () => widget.onPressed(),
       child: Container(
-
+        height: widget.heightFirthCircle,
+        width: widget.heightFirthCircle,
+        padding: EdgeInsets.all(paddingSmall),
         decoration: BoxDecoration(
-          color: _reaction ? colorPrimary : widget.primaryColor,
-          shape: BoxShape.circle
+            color:_reaction ? widget.firthReaction : widget.primaryColor, borderRadius: BorderRadius.circular(20)),
+        child: Container(
+          height: widget.heightSecondCircle,
+          width:  widget.heightSecondCircle,
+          decoration:
+          BoxDecoration(color:_reaction? widget.secondReaction: colorWhite, shape: BoxShape.circle),
+          child: Center(
+            child: Icon(
+            widget.icon,
+                color: _reaction ? colorWhite : widget.iconColor,size:widget.size
+            ),
+          ),
         ),
-        height: widget.height,
-        width: widget.height,
-        child: Icon(widget.icon, color: _reaction ? colorWhite : widget.iconColor,size:widget.size , ),
       ),
     );
   }
