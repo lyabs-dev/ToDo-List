@@ -1,10 +1,11 @@
 import 'package:flutter_structure/presentation/router/no_animation_route.dart';
+import 'package:flutter_structure/presentation/screens/sign_up/sign_up.dart';
 import 'package:flutter_structure/utils/my_material.dart';
 
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
-
-    Map<String, dynamic>? arguments = settings.arguments as Map<String, dynamic>?;
+    Map<String, dynamic>? arguments =
+        settings.arguments as Map<String, dynamic>?;
     Widget? page;
 
     switch (settings.name) {
@@ -14,12 +15,15 @@ class AppRouter {
       case pageSignIn:
         page = const SignIn();
         break;
+      case pageSignUp:
+        page = const SignUp();
+        break;
+
       default:
     }
 
     if (page != null) {
-
-      if (arguments != null && (arguments[argumentIsNOAnimation]?? false)) {
+      if (arguments != null && (arguments[argumentIsNOAnimation] ?? false)) {
         return NoAnimationMaterialPageRoute(builder: (_) => page!);
       }
 

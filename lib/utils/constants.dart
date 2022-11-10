@@ -6,6 +6,7 @@ const supportedLanguages = ['en'];
 /// PAGES
 const pageHome = '/';
 const pageSignIn = '/SignIn';
+const pageSignUp = '/SignUp';
 const fieldStatusCode = 'status_code';
 
 //SHARED PREFERENCES
