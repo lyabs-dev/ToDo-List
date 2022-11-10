@@ -10,6 +10,8 @@ export 'package:flutter_structure/presentation/components/my_text.dart';
 export 'package:flutter_structure/presentation/components/scaffold_color.dart';
 export 'package:flutter_structure/presentation/components/app_edit_text.dart';
 export 'package:flutter_structure/presentation/components/footer_page.dart';
+export 'package:flutter_structure/presentation/components/circle_button.dart';
+
 
 
 //utils
