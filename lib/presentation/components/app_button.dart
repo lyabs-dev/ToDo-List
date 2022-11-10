@@ -29,47 +29,49 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      customBorder:
-      RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
-      onTap: () => onPressed(),
-      highlightColor: colorPrimaryLight,
-      hoverColor: colorWhite,
-      child: Ink(
-      //  width: getProportionateScreenWidth(width!, context),
-        decoration: BoxDecoration(
-            color: primaryColor,
-            borderRadius:
-            BorderRadius.all(Radius.circular(borderRadius!))),
-        padding: EdgeInsets.symmetric(
-            horizontal:paddingHorizontal!,
-            vertical:
-            getProportionateScreenHeight(paddingVertical!, context)),
-        child: whitIcons
-            ? Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            SizedBox.shrink(),
-            Text(
-             text!,
-              style: TextStyle(
-                fontSize: getProportionateScreenWidth(fontSize!, context),
-                color: textColor,
-                fontWeight: textFontWeight ?? FontWeight.w600,
+    return Material(
+      child: InkWell(
+        customBorder:
+        RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
+        onTap: () => onPressed(),
+        highlightColor: colorPrimaryLight,
+        hoverColor: colorWhite,
+        child: Ink(
+        //  width: getProportionateScreenWidth(width!, context),
+          decoration: BoxDecoration(
+              color: primaryColor,
+              borderRadius:
+              BorderRadius.all(Radius.circular(borderRadius!))),
+          padding: EdgeInsets.symmetric(
+              horizontal:paddingHorizontal!,
+              vertical:
+              getProportionateScreenHeight(paddingVertical!, context)),
+          child: whitIcons
+              ? Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox.shrink(),
+              Text(
+               text!,
+                style: TextStyle(
+                  fontSize: getProportionateScreenWidth(fontSize!, context),
+                  color: textColor,
+                  fontWeight: textFontWeight ?? FontWeight.w600,
+                ),
               ),
-            ),
-           icon!,
-          ],
-        )
-            : Text(
-          text!,
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontSize:getProportionateScreenWidth(fontSize!, context) ,
+             icon!,
+            ],
+          )
+              : Text(
+            text!,
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize:getProportionateScreenWidth(fontSize!, context) ,
 
-            color:
-            textColor,
-            fontWeight:textFontWeight ?? FontWeight.w600,
+              color:
+              textColor,
+              fontWeight:textFontWeight ?? FontWeight.w600,
+            ),
           ),
         ),
       ),
