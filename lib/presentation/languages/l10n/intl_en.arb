@@ -14,9 +14,11 @@
   "view": "View",
   "createYour":"Create your \nnotes \neasily",
   "getStarted": "Get Started",
-  "welcomeBack":"Welcome Back",
+  "welcomeBack":"Welcome \nBack",
   "email":"Email",
-  "Password": "Password",
+  "password": "Password",
   "signIn": "Sign In",
-  "signUp": "Sign Up"
+  "signUp": "Sign Up",
+  "name": "Name",
+  "createAccount": "Create \nAccount"
 }
