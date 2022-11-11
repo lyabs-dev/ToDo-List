@@ -5,8 +5,8 @@ class MyText extends StatelessWidget {
   final String text;
   final TextStyle style;
   final TextAlign? textAlign;
-
-  const MyText(this.text, {Key? key, required this.style, this.textAlign}): super(key: key);
+  final int? maxLines;
+  const MyText(this.text, {Key? key, required this.style, this.textAlign, this.maxLines }): super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +15,13 @@ class MyText extends StatelessWidget {
           style: style,
           child: Text(
             text,
+            maxLines: maxLines ,
             textAlign: textAlign,
           ));
     } else {
       return Text(
         text,
+        maxLines: maxLines,
         textAlign: textAlign,
         style: style,
       );
