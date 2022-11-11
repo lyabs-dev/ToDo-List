@@ -14,7 +14,7 @@ class FooterPage extends StatelessWidget {
           children: [
             InkWell(
               onTap: () {
-                Navigator.of(context).pushNamed(pageHome);
+
               },
               child: MyText(
                   signUp
@@ -55,7 +55,7 @@ class FooterPage extends StatelessWidget {
         ),
         Align(
             alignment: Alignment.bottomRight,
-            child: CircleButton(Icons.arrow_forward, () {}, iconColor: colorPrimary,))
+            child: CircleButton(Icons.arrow_forward, () {    Navigator.of(context).pushNamed(pageHome);}, iconColor: colorPrimary,))
       ],
     );
   }

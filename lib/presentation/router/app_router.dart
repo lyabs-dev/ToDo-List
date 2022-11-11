@@ -6,13 +6,12 @@ class AppRouter {
     Map<String, dynamic>? arguments =
         settings.arguments as Map<String, dynamic>?;
     Widget? page;
-
     switch (settings.name) {
       case pageWelcome:
         page = const WelcomePage();
         break;
       case pageHome:
-        page = const Home();
+        page =  Home();
         break;
       case pageSignIn:
         page = const SignIn();
@@ -20,7 +19,6 @@ class AppRouter {
       case pageSignUp:
         page = const SignUp();
         break;
-
       default:
     }
 

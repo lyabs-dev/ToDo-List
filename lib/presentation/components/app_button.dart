@@ -50,8 +50,8 @@ class AppButton extends StatelessWidget {
           child: whitIcons
               ? Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [ icon!,
-              Text(
+            children: [ icon!,SizedBox(width: getShortSize(5, context),)
+             , Text(
                text!,
                 style: TextStyle(
                   fontSize: getProportionateScreenWidth(fontSize!, context),

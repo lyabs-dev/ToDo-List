@@ -31,11 +31,13 @@ class SignUp extends StatelessWidget {
                         style: TextStyle(
                             color: colorWhite,
                             fontFamily: poppins,
-                            fontSize:
-                                getProportionateScreenWidth(paddingXXLarge, context),
+                            fontSize: getProportionateScreenWidth(
+                                paddingXXLarge, context),
                             fontWeight: FontWeight.w900)),
                     FieldSignUp(),
-                    FooterPage(signUp: true,)
+                    FooterPage(
+                      signUp: true,
+                    )
                   ],
                 ),
               ),
@@ -43,7 +45,11 @@ class SignUp extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.topCenter,
-            child: Image(image: AssetImage(PathImage.signUp),filterQuality: FilterQuality.high,fit: BoxFit.cover,),
+            child: Image(
+              image: AssetImage(PathImage.signUp),
+              filterQuality: FilterQuality.high,
+              fit: BoxFit.cover,
+            ),
           ),
         ],
       ),
