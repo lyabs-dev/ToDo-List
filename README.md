@@ -1,6 +1,10 @@
 # Flutter ToDo List
 Cross platform ToDo List  made with Flutter and Bloc.
 
+<blockquote>
+To run this project you must firstly generate the firebase_options.dart file which must be in lib folder of the source, all instructions are available on <a href="https://firebase.flutter.dev/docs/cli">Initialize Firebase</a>
+</blockquote>
+
 <h3>Features</h3>
 <ul>
   <li>Account creation</li>
