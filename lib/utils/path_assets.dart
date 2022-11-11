@@ -2,6 +2,7 @@ class PathImage{
   static String logo = "assets/images/logo.png";
   static String signIn = "assets/images/sign_in.png";
   static String signUp = "assets/images/sign_up.png";
+  static String home = "assets/images/home.png";
 }
 
 class PathIcons{
