@@ -43,7 +43,6 @@ class FooterPage extends StatelessWidget {
                   style: TextStyle(
                       color: signUp ? colorWhite : colorPrimary,
                       fontFamily: poppins,
-                      decoration: TextDecoration.underline,
                       fontSize:
                           getProportionateScreenWidth(textSizeSMedium, context),
                       fontWeight: FontWeight.w500)),
