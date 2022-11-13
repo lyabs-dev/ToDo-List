@@ -19,6 +19,9 @@ class AppRouter {
       case pageSignUp:
         page = const SignUp();
         break;
+      case pageDetailNote:
+        page =  DetailNote();
+        break;
       default:
     }
 

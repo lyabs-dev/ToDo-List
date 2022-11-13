@@ -8,6 +8,8 @@ const pageWelcome = '/';
 const pageSignIn = '/SignIn';
 const pageSignUp = '/SignUp';
 const pageHome = '/Home';
+const pageDetailNote = '/DetailNote';
+
 const fieldStatusCode = 'status_code';
 
 //SHARED PREFERENCES
