@@ -11,6 +11,10 @@ class Home extends StatelessWidget {
     Note(false, "Grocery list", "Milk\nBread\nVeggies\nEgg\nFruits\nShakes", "25 dec"),
     Note(false, "Figma", "Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes", "2 sept"),
     Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
+    Note(false, "", "Pay credit card bills amount \$450", "23 juil"),
+    Note(false, "Grocery list", "Milk\nBread\nVeggies\nEgg\nFruits\nShakes", "25 dec"),
+    Note(true, "Figma", "Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes", "2 sept"),
+    Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
   ];
 
   return Scaffold(
@@ -79,7 +83,7 @@ class Home extends StatelessWidget {
                           ],
                         ),
                         AppButton(
-                          "15 Notes",
+                          "${listNotes.length} Notes",
                           () {},
                           whitIcons: true,
                           paddingVertical: 7,
@@ -127,6 +131,14 @@ class Home extends StatelessWidget {
               fit: BoxFit.fitHeight,
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 20),
+            child: Align(
+                alignment: Alignment.bottomCenter,
+                child: CircleButton(Icons.add, () {
+                  //Navigator.of(context).pushNamed(pageDetailNote);
+                  }, iconColor: colorPrimary,)),
+          )
         ],
       ),
     );
