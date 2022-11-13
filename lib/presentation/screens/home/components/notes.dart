@@ -17,7 +17,9 @@ class Notes extends StatelessWidget {
         child: InkWell(
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
-          onTap: () {},
+          onTap: () {
+            Navigator.of(context).pushNamed(pageDetailNote);
+          },
           highlightColor: colorPrimaryLight,
           hoverColor: colorWhite,
           child: Ink(

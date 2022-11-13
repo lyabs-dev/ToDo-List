@@ -136,7 +136,7 @@ class Home extends StatelessWidget {
             child: Align(
                 alignment: Alignment.bottomCenter,
                 child: CircleButton(Icons.add, () {
-                  //Navigator.of(context).pushNamed(pageDetailNote);
+                  Navigator.of(context).pushNamed(pageDetailNote);
                   }, iconColor: colorPrimary,)),
           )
         ],
