@@ -3,13 +3,13 @@ import 'package:flutter_structure/utils/my_material.dart';
 class AppEditText extends StatelessWidget {
   final String? hintText, labelText;
   final TextEditingController controller;
-  final bool isPassword, showCursor;
+  final bool isPassword, showCursor,autofocus;
   final TextInputType inputType;
   final double? width;
-  final Color? color, backgroundColor,cursorColor;
+  final Color? color, backgroundColor, cursorColor;
   final BorderRadius? borderRadius;
-  final InputBorder border, enabledBorder,focusedBorder;
-  final EdgeInsets? padding,contentPadding;
+  final InputBorder border, enabledBorder, focusedBorder;
+  final EdgeInsets? padding, contentPadding;
   final Widget? suffixIcon;
   final TextStyle? hintStyle, labelStyle, style;
   final Widget? prefixIcon;
@@ -23,12 +23,14 @@ class AppEditText extends StatelessWidget {
       this.width,
       this.backgroundColor,
       this.borderRadius,
-        this.cursorColor,
-      this.padding,this.contentPadding,
+        this.autofocus = false,
+      this.cursorColor,
+      this.padding,
+      this.contentPadding,
       this.suffixIcon,
-        this.border :InputBorder.none,
-        this.enabledBorder :InputBorder.none,
-        this.focusedBorder :InputBorder.none,
+      this.border: InputBorder.none,
+      this.enabledBorder: InputBorder.none,
+      this.focusedBorder: InputBorder.none,
       this.hintStyle,
       this.labelStyle,
       this.style,
@@ -56,6 +58,7 @@ class AppEditText extends StatelessWidget {
         keyboardType: inputType,
         focusNode: focusNode,
         maxLines: maxLines,
+        autofocus: autofocus,
         minLines: 1,
         cursorColor: cursorColor,
         style: style,
@@ -68,7 +71,7 @@ class AppEditText extends StatelessWidget {
           labelStyle: labelStyle,
           border: border,
           enabledBorder: enabledBorder,
-          focusedBorder:  focusedBorder,
+          focusedBorder: focusedBorder,
         ),
       ),
     );
