@@ -42,6 +42,7 @@ export 'package:flutter_structure/presentation/styles/styles.dart';
 export 'package:flutter_structure/presentation/screens/sign_in/sign_in.dart';
 export 'package:flutter_structure/presentation/screens/home/home.dart';
 export 'package:flutter_structure/presentation/screens/sign_up/sign_up.dart';
+export 'package:flutter_structure/presentation/screens/detail_note/detail_note.dart';
 
 
 
