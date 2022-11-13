@@ -6,11 +6,12 @@ class CircleButton extends StatefulWidget {
   final FontWeight? textFontWeight;
   final IconData? icon;
   final double size, heightFirthCircle,heightSecondCircle;
-  final Color primaryColor, iconColor,firthReaction,secondReaction;
+  final Color primaryColor, secondColor,iconColor,firthReaction,secondReaction;
 
   const CircleButton(this.icon, this.onPressed,
       {Key? key,
         this.primaryColor = buttonColor,
+        this.secondColor = colorWhite,
         this.iconColor = colorWhite,
         this.size = textSizeNormal,
         this.firthReaction = colorSecondary,
@@ -52,7 +53,7 @@ class _CircleButtonState extends State<CircleButton> {
           height: widget.heightSecondCircle,
           width:  widget.heightSecondCircle,
           decoration:
-          BoxDecoration(color:_reaction? widget.secondReaction: colorWhite, shape: BoxShape.circle),
+          BoxDecoration(color:_reaction? widget.secondReaction: widget.secondColor, shape: BoxShape.circle),
           child: Center(
             child: Icon(
             widget.icon,
