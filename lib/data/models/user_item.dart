@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 const FIELD_USER_AUTH_ID = 'auth_id';
 const FIELD_USER_EMAIL = 'email';
 const FIELD_USER_NAME = 'name';
-const FIELD_USER_DOCUMENT = 'auth_id';
+const FIELD_USER_DOCUMENT = 'document';
 
 class UserItem {
   final String authId;
@@ -36,8 +36,8 @@ class UserItem {
   Map<String, dynamic> toMap() {
     return {
       FIELD_USER_AUTH_ID: authId,
-      FIELD_USER_EMAIL : email,
-      FIELD_USER_NAME : name,
+      FIELD_USER_EMAIL: email,
+      FIELD_USER_NAME: name,
     };
   }
 
