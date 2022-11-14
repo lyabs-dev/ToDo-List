@@ -14,6 +14,7 @@ class PathIcons{
   static String info = "assets/icons/info.png";
   static String calendar = "assets/icons/calendar.png";
   static String graph = "assets/icons/graph.png";
+  static String moreCircle = "assets/images/more_circle.png";
 }
 
 class PathAnimation{
