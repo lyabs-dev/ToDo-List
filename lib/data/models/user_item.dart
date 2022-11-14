@@ -1,5 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
+const COLLECTION_USER = 'user';
 const FIELD_USER_AUTH_ID = 'auth_id';
 const FIELD_USER_EMAIL = 'email';
 const FIELD_USER_NAME = 'name';
