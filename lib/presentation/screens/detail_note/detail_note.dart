@@ -26,7 +26,7 @@ class DetailNote extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     InkWell(
-                      onTap: (){
+                      onTap: () {
                         Navigator.of(context).pop();
                       },
                       child: Icon(
@@ -40,14 +40,29 @@ class DetailNote extends StatelessWidget {
                             fontWeight: FontWeight.w600,
                             fontSize: getProportionateScreenWidth(
                                 textSizeNormal, context))),
-                    Icon(
+                    PopupMenuButton<MenuItem>(
+                      elevation: 1.0,
+                      splashRadius: 20.0,
+                      position: PopupMenuPosition.over,
+                      child:  Image(
+                        image: AssetImage(PathIcons.moreCircle),
+                        filterQuality: FilterQuality.high,
+                        height: 20,
+                      ),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20.0)),
+                        itemBuilder: (context) => [
+                              PopupMenuItem(
+                                  value: MenuItem.item1, child: Text("Delete"))
+                            ]),
+                    /* Icon(
                       Icons.check,
                       color: colorPrimary,
-                    ),
+                    ),*/
                   ],
                 ),
               ),
               Column(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   SizedBox(
                     height: getShortSize(30, context),
@@ -58,7 +73,6 @@ class DetailNote extends StatelessWidget {
                         child: AppEditText(
                           "Title",
                           titleController,
-                          autofocus: true,
                           hintStyle: TextStyle(
                               color: colorPrimary,
                               fontSize: getProportionateScreenWidth(
@@ -71,6 +85,12 @@ class DetailNote extends StatelessWidget {
                                   textSizeLarge, context)),
                         ),
                       ),
+                      IconButton(
+                          onPressed: () {},
+                          icon: Icon(
+                            Icons.calendar_month,
+                            color: colorPrimary,
+                          )),
                       IconButton(
                           onPressed: () {},
                           icon: Icon(
@@ -89,7 +109,7 @@ class DetailNote extends StatelessWidget {
                   ))
                 ],
               ),
-             /* Align(
+              /* Align(
                 alignment: Alignment.bottomRight,
                 child: Padding(
                   padding: const EdgeInsets.only(bottom: 20),
@@ -113,3 +133,5 @@ class DetailNote extends StatelessWidget {
     );
   }
 }
+
+enum MenuItem { item1 }

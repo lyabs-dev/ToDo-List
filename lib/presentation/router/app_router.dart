@@ -1,6 +1,8 @@
 import 'package:flutter_structure/presentation/router/no_animation_route.dart';
 import 'package:flutter_structure/utils/my_material.dart';
 
+import '../screens/detail_note/detail_note.dart';
+
 class AppRouter {
   Route? onGenerateRoute(RouteSettings settings) {
     Map<String, dynamic>? arguments =
