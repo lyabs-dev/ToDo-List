@@ -17,6 +17,7 @@ class NoteItem {
   final DateTime dateTime;
   final DateTime creationDate;
   final bool remind;
+  final DocumentSnapshot? document;
 
   NoteItem({
     required this.userId,
@@ -24,7 +25,8 @@ class NoteItem {
     required this.description,
     required this.dateTime,
     required this.creationDate,
-    required this.remind
+    required this.remind,
+    this.document
   });
 
   factory NoteItem.defaultNote()=>
@@ -47,12 +49,13 @@ class NoteItem {
         map[FIELD_NOTE_CREATION_DATE] != null) {
 
       note = NoteItem(
-        userId: map[FIELD_USER_ID],
-        title: map[FIELD_NOTE_TITLE],
-        description: map[FIELD_NOTE_DESCRIPTION],
-        dateTime: map[FIELD_NOTE_DATETIME],
-        creationDate: map[FIELD_NOTE_CREATION_DATE],
-        remind: map[FIELD_NOTE_REMIND],
+          userId: map[FIELD_USER_ID],
+          title: map[FIELD_NOTE_TITLE],
+          description: map[FIELD_NOTE_DESCRIPTION],
+          dateTime: map[FIELD_NOTE_DATETIME],
+          creationDate: map[FIELD_NOTE_CREATION_DATE],
+          remind: map[FIELD_NOTE_REMIND],
+          document: map[FIELD_NOTE_DOCUMENT]
       );
     }
   }
