@@ -24,6 +24,9 @@ class AppRouter {
       case pageDetailNote:
         page =  DetailNote();
         break;
+      case pageCalendar:
+        page =  Calendar();
+        break;
       default:
     }
 

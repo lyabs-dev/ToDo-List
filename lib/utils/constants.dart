@@ -8,6 +8,7 @@ const pageWelcome = '/';
 const pageSignIn = '/SignIn';
 const pageSignUp = '/SignUp';
 const pageHome = '/Home';
+const pageCalendar = '/Calendar';
 const pageDetailNote = '/DetailNote';
 
 const fieldStatusCode = 'status_code';
