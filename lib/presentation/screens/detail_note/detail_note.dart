@@ -126,7 +126,11 @@ class _DetailNoteState extends State<DetailNote> {
                                       value: MenuItem.item1,
                                       child: Text(
                                         AppLocalizations.of(context)!.delete,
-                                        style: TextStyle(color: colorPrimary, fontSize: getProportionateScreenWidth(textSizeSMedium, context)),
+                                        style: TextStyle(
+                                            color: colorPrimary,
+                                            fontSize:
+                                                getProportionateScreenWidth(
+                                                    textSizeSMedium, context)),
                                       ))
                                 ]),
                   ],
@@ -142,7 +146,7 @@ class _DetailNoteState extends State<DetailNote> {
                     children: [
                       Expanded(
                         child: AppEditText(
-                          "Title",
+                          AppLocalizations.of(context)!.title,
                           titleController,
                           focusNode: _focusTitle,
                           hintStyle: TextStyle(
@@ -272,7 +276,7 @@ class _DetailNoteState extends State<DetailNote> {
                   ),
                   Expanded(
                       child: AppEditText(
-                    "Description",
+                    AppLocalizations.of(context)!.description,
                     textEditingController,
                     focusNode: _focusDescription,
                     style: TextStyle(color: colorPrimary),
