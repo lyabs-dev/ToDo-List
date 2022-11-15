@@ -18,6 +18,7 @@ export 'package:flutter_structure/utils/path_assets.dart';
 export 'package:flutter_structure/utils/constants.dart';
 export 'package:flutter_structure/utils/enums.dart';
 export 'package:flutter_structure/utils/sizes_config.dart';
+export 'package:flutter_structure/utils/methods.dart';
 
 //data
 export 'package:flutter_structure/data/models/settings_item.dart';
@@ -42,6 +43,7 @@ export 'package:flutter_structure/presentation/styles/styles.dart';
 export 'package:flutter_structure/presentation/screens/sign_in/sign_in.dart';
 export 'package:flutter_structure/presentation/screens/home/home.dart';
 export 'package:flutter_structure/presentation/screens/sign_up/sign_up.dart';
+export 'package:flutter_structure/presentation/screens/calendar/calendar.dart';
 
 
 
