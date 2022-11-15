@@ -10,7 +10,8 @@ const pageSignUp = '/SignUp';
 const fieldStatusCode = 'status_code';
 
 //SHARED PREFERENCES
-const prefSettings = 'settings';
+const PREF_SETTINGS = 'settings';
+const PREF_CURRENT_USER = 'current_user';
 
 /// PAGES ARGUMENTS
 const argumentId = 'id';
