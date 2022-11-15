@@ -17,6 +17,8 @@ class Home extends StatelessWidget {
     Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
   ];
 
+  DateTime dateTime = DateTime.now();
+
   return Scaffold(
       body: Stack(
         children: [
@@ -72,8 +74,10 @@ class Home extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(15.0),
                               ),
                               child: AppButton(
-                                "22 Nov",
-                                () {},
+                                "${formatDate(dateTime,"MMMd")}",
+                                () {
+                                  Navigator.of(context).pushNamed(pageCalendar);
+                                },
                                 primaryColor: colorWhite,
                                 textColor: colorPrimary,
                                 borderRadius: 20,
