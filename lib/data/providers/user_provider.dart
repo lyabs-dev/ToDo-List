@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:html';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter_structure/data/models/user_item.dart';
 import 'package:shared_preferences/shared_preferences.dart';
