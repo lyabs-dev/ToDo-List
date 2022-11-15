@@ -7,7 +7,7 @@ import 'package:test/test.dart' as test;
 
 class UserTest {
   static UserItem user = UserItem(
-    authId: '',
+    authId: 'wertyuiokltyu',
     name: 'jonathan',
     email: 'jokalmwamba@gmail.com'
   );
@@ -28,6 +28,8 @@ class UserTest {
     test.test('Add', () async {
       DocumentSnapshot? document = await repository.add(user);
       user.document = document;
+      print('###########print document##############');
+      print(document);
       test.expect(document, test.isNot(null));
     });
   }
