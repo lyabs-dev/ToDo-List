@@ -23,5 +23,7 @@
   "createAccount": "Create \nAccount",
   "goodMorning": "Good morning \nLoick",
   "note": "Note",
-  "delete":"Delete"
+  "delete":"Delete",
+  "title": "Title",
+  "description": "Description"
 }
