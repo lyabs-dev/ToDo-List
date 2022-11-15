@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:intl/intl.dart';
 import '../../../utils/my_material.dart';
 
 class DetailNote extends StatefulWidget {
@@ -62,8 +61,6 @@ class _DetailNoteState extends State<DetailNote> {
   TimeOfDay time =
       TimeOfDay(hour: TimeOfDay.now().hour, minute: TimeOfDay.now().minute);
 
-  String formatDate(DateTime date) => new DateFormat("MMMd").format(date);
-
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,7 +95,7 @@ class _DetailNoteState extends State<DetailNote> {
                             color: colorPrimary,
                             fontWeight: FontWeight.w600,
                             fontSize: getProportionateScreenWidth(
-                                textSizeNormal, context))),
+                                textSizeMedium, context))),
                     (_infoNodeTitle || _infoNodeDescription)
                         ? InkWell(
                             onTap: () {
@@ -288,7 +285,7 @@ class _DetailNoteState extends State<DetailNote> {
                     children: [
                       dateChange
                           ? AppButton(
-                              "${formatDate(_dateTime)}",
+                              "${formatDate(_dateTime,"MMMd")}",
                               () {},
                               primaryColor: colorPrimary,
                               textColor: colorWhite,
