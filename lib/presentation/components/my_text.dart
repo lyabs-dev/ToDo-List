@@ -1,4 +1,4 @@
-import 'dart:io';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_structure/utils/my_material.dart';
 
 class MyText extends StatelessWidget {
@@ -10,7 +10,7 @@ class MyText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isIOS) {
+    if (defaultTargetPlatform == TargetPlatform.iOS) {
       return DefaultTextStyle(
           style: style,
           child: Text(
