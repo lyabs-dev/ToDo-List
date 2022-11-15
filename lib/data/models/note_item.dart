@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 
+const COLLECTION_NOTE = 'note',
 const FIELD_USER_ID = 'user_id';
 const FIELD_NOTE_TITLE = 'title';
 const FIELD_NOTE_DESCRIPTION = 'description';
