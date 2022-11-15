@@ -35,7 +35,7 @@ class UserItem {
     return user;
   }
 
-  Map<String, dynamic> toMap() {
+  Map<String, Object> toMap() {
     return {
       FIELD_USER_AUTH_ID: authId,
       FIELD_USER_EMAIL: email,
