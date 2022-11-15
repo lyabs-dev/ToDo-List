@@ -22,5 +22,6 @@
   "name": "Name",
   "createAccount": "Create \nAccount",
   "goodMorning": "Good morning \nLoick",
-  "note": "Note"
+  "note": "Note",
+  "delete":"Delete"
 }
