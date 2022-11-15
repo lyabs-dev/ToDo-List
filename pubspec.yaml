@@ -33,6 +33,7 @@ dependencies:
   test: ^1.21.1
   firebase_core: ^2.2.0
   firebase_auth: ^4.1.2
+  paged_vertical_calendar: ^1.1.5
 
 dev_dependencies:
   flutter_test:
