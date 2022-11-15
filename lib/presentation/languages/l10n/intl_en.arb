@@ -25,5 +25,6 @@
   "note": "Note",
   "delete":"Delete",
   "title": "Title",
-  "description": "Description"
+  "description": "Description",
+  "calendar":"Calendar"
 }
