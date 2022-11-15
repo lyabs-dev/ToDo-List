@@ -11,9 +11,9 @@ class UserItem {
   final String authId;
   final String name;
   final String email;
-  final DocumentSnapshot? document;
+  DocumentSnapshot? document;
 
-  const UserItem({
+  UserItem({
   this.authId:'',
   required this.name,
   required this.email,
