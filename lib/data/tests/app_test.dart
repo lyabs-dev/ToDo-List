@@ -4,7 +4,7 @@ import 'package:flutter_structure/data/tests/tests/user_test.dart';
 class AppTest {
 
   static run() {
-    SettingsTest.run();
+    //SettingsTest.run();
     UserTest.run();
   }
 
