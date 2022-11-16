@@ -9,7 +9,7 @@ const FIELD_USER_DOCUMENT = 'document';
 
 class UserItem {
   final String authId;
-  final String name;
+  String name;
   final String email;
   DocumentSnapshot? document;
 
