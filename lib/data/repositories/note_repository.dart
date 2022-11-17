@@ -11,7 +11,7 @@ class NoteRepository {
     return await provider.add(note.toMap());
   }
 
-  Future<List<NoteItem>> getPosts({DocumentSnapshot? startAfter, int? limit})async{
+  Future<List<NoteItem>> getNotes({DocumentSnapshot? startAfter, int? limit})async{
     List<NoteItem> notes = [];
 
     List<Map> list = await provider.getNotes(limit: limit, startAfter: startAfter);
@@ -24,8 +24,10 @@ class NoteRepository {
     return notes ;
   }
 
-  Future<NoteItem?> getPost(String docId,{enableCache:false})async{
-    Map map = await provider.getPost(docId);
+  Future<NoteItem?> getNote(String docId,{enableCache:false})async{
+    Map map = await provider.getNote(docId);
+    print('********Lina**********');
+    print(map);
     return NoteItem.fromMap(map);
   }
 
