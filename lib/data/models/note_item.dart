@@ -13,12 +13,12 @@ const FIELD_NOTE_DOCUMENT = 'document';
 
 class NoteItem {
   final String userId;
-  final String title;
-  final String description;
-  final DateTime dateTime;
+  String title;
+  String description;
+  DateTime dateTime;
   final DateTime creationDate;
-  final bool remind;
-  final DocumentSnapshot? document;
+  bool remind;
+  DocumentSnapshot? document;
 
   NoteItem({
     required this.userId,
@@ -42,23 +42,27 @@ class NoteItem {
 
   static NoteItem? fromMap(Map map) {
     NoteItem? note;
+    print('************PRINT MAP************');
+    print(map);
 
     if(
         map[FIELD_USER_ID] != null &&
         map[FIELD_NOTE_TITLE] != null &&
-        map[FIELD_NOTE_DESCRIPTION] !=null &&
-        map[FIELD_NOTE_CREATION_DATE] != null) {
+        map[FIELD_NOTE_DESCRIPTION] !=null) {
 
       note = NoteItem(
           userId: map[FIELD_USER_ID],
           title: map[FIELD_NOTE_TITLE],
           description: map[FIELD_NOTE_DESCRIPTION],
-          dateTime: map[FIELD_NOTE_DATETIME],
-          creationDate: map[FIELD_NOTE_CREATION_DATE],
+          dateTime: map[FIELD_NOTE_DATETIME].toDate(),
+          creationDate: map[FIELD_NOTE_CREATION_DATE].toDate(),
           remind: map[FIELD_NOTE_REMIND],
           document: map[FIELD_NOTE_DOCUMENT]
       );
+      print('************JOKAL*****************');
+      print(note.toString());
     }
+    return note;
   }
 
   Map<String, Object> toMap(){
@@ -70,6 +74,17 @@ class NoteItem {
       FIELD_NOTE_DATETIME: dateTime,
       FIELD_NOTE_REMIND: remind
     };
+  }
+
+  @override
+  String toString() {
+
+    return 'id: '
+        '$userId title: '
+        '$title description:'
+        ' $description datetime: '
+        '$dateTime creation: '
+        '$creationDate document: ${document.toString()}';
   }
 
 }
