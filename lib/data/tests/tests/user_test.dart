@@ -17,11 +17,11 @@ class UserTest {
   static run() {
     print('=========Start User Test=========');
 
-    //_add();
-    //_update();
+    _add();
+    _update();
     _getUser();
     _getFromAuthId();
-    //_getCurrentUser();
+    _getCurrentUser();
   }
 
   static _add() {

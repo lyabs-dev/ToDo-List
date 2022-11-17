@@ -6,7 +6,7 @@ class AppTest {
 
   static run() {
     //SettingsTest.run();
-    //UserTest.run();
+    UserTest.run();
     NoteTest.run();
   }
 
