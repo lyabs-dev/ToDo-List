@@ -50,7 +50,7 @@ class NoteProvider {
     return list;
   }
 
-  Future<Map> getPost(String documentId) async {
+  Future<Map> getNote(String documentId) async {
     Map map = {};
 
     try {
