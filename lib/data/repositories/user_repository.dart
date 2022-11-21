@@ -23,6 +23,11 @@ class UserRepository {
     return UserItem.fromMap(map);
   }
 
+  Future<UserItem?> getFromEmail(String email) async {
+    Map map = await userProvider.getFromEmail(email);
+    return UserItem.fromMap(map);
+  }
+
   Future<UserItem?> getFromAuthId(String authId) async {
     Map map = await userProvider.getFromAuthId(authId);
     return UserItem.fromMap(map);
