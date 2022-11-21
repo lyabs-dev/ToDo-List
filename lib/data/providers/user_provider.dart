@@ -53,6 +53,26 @@ class UserProvider {
     return map;
   }
 
+  Future<Map> getFromEmail(String email) async {
+    Map map = {};
+
+    try {
+      var result = await FirebaseFirestore.instance.collection(COLLECTION_USER)
+          .where(FIELD_USER_EMAIL, isEqualTo: email.toLowerCase())
+          .get();
+      if (result.docs.isNotEmpty) {
+        map = result.docs.first.data();
+        map[FIELD_USER_DOCUMENT] = result.docs.first;
+      }
+    }
+    catch (err) {
+      debugPrint('=======Failed to get user from email: $err');
+    }
+
+    return map;
+  }
+
+
   Future<Map> getFromAuthId(String authId) async {
     Map map = {};
 
