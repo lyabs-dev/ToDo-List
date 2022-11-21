@@ -26,8 +26,7 @@
   "delete":"Delete",
   "title": "Title",
   "description": "Description",
-  "calendar":"Calendar"
-  "createAccount": "Create \nAccount",
+  "calendar":"Calendar",
   "fieldRequired": "Field can't be empty",
   "signedSucces": "SIgned Successful",
   "passwordWeak": "Password is weak",
