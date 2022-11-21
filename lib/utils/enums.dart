@@ -1,4 +1,3 @@
-
 enum CustomState {
   loading,
   done,
