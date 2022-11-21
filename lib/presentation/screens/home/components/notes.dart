@@ -42,7 +42,7 @@ class Notes extends StatelessWidget {
                         fontSize: getProportionateScreenWidth(
                             textSizeLargeMedium, context))),
                 MyText(tacks!,
-                    maxLines: 8,
+                    maxLines: 5,
                     style: TextStyle(
                         color: reminder ? colorWhite : colorBlack,
                         fontWeight: FontWeight.w100,
