@@ -9,7 +9,7 @@ class SettingsProvider {
     Map<String, dynamic> result = SettingsItem().toMap();
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? settingsString = prefs.getString(prefSettings);
+    String? settingsString = prefs.getString(PREF_SETTINGS);
 
     if (settingsString != null) {
       try {
@@ -25,7 +25,7 @@ class SettingsProvider {
 
   Future<bool> setSettings(SettingsItem settings) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    return await prefs.setString(prefSettings, json.encode(settings.toMap()));
+    return await prefs.setString(PREF_SETTINGS, json.encode(settings.toMap()));
   }
 
 }

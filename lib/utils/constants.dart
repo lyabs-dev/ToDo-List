@@ -14,7 +14,8 @@ const pageDetailNote = '/DetailNote';
 const fieldStatusCode = 'status_code';
 
 //SHARED PREFERENCES
-const prefSettings = 'settings';
+const PREF_SETTINGS = 'settings';
+const PREF_CURRENT_USER = 'current_user';
 
 /// PAGES ARGUMENTS
 const argumentId = 'id';
@@ -63,3 +64,6 @@ const paddingLarge = 30.0;
 const paddingXLarge = 35.0;
 const paddingXXLarge = 45.0;
 const paddingXXXLarge = 52.0;
+
+/// RG Expressions
+const REG_EMAIL_VALID = r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+";

@@ -27,4 +27,12 @@
   "title": "Title",
   "description": "Description",
   "calendar":"Calendar"
+  "createAccount": "Create \nAccount",
+  "fieldRequired": "Field can't be empty",
+  "signedSucces": "SIgned Successful",
+  "passwordWeak": "Password is weak",
+  "emailExists": "This email alrady exist",
+  "invalidEmail": "Invalid Email",
+  "emailPasswordIncorrect": "email or password is Incorrect",
+  "authFailed": "Authentification falled"
 }
