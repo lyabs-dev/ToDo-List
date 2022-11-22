@@ -2,7 +2,8 @@ import '../../utils/my_material.dart';
 
 class FooterPage extends StatelessWidget {
   final bool signUp;
-  const FooterPage({Key? key, this.signUp = false}) : super(key: key);
+  var signIn;
+   FooterPage({this.signIn ,Key? key, this.signUp = false}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +55,11 @@ class FooterPage extends StatelessWidget {
         ),
         Align(
             alignment: Alignment.bottomRight,
-            child: CircleButton(Icons.arrow_forward, () {    Navigator.of(context).pushNamed(pageHome);}, iconColor: colorPrimary,))
+            child: CircleButton(Icons.arrow_forward,
+                  () {
+              //Navigator.of(context).pushNamed(pageHome);
+              signIn;},
+  iconColor: colorPrimary,))
       ],
     );
   }
