@@ -91,6 +91,23 @@ class UserProvider {
     return map;
   }
 
+  //check if username already exists
+  Future<bool?> isUserExist(String username) async {
+    bool? isExist;
+
+    try {
+      var result = await FirebaseFirestore.instance.collection(COLLECTION_USER)
+          .where(FIELD_USER_NAME, isEqualTo: username.toLowerCase())
+          .get();
+      isExist = result.docs.isNotEmpty;
+    }
+    catch (err) {
+      debugPrint('=======Failed to check if user exists: $err');
+    }
+
+    return isExist;
+  }
+
   Future<Map<String, Object>> getCurrentUser() async {
     Map<String, Object> result = {};
 
