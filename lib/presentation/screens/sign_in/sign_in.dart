@@ -43,8 +43,10 @@ class SignIn extends StatelessWidget {
                                       fontSize: getProportionateScreenWidth(
                                           paddingXXXLarge, context),
                                       fontWeight: FontWeight.w900)),
-                              FieldSignIn(),
-                              FooterPage()
+                              FieldSignIn(
+                                  emailEditingController:state.emailEditingController,
+                                  passwordEditingController:state.passwordEditingController),
+                              FooterPage(signIn: context.read<SignInCubit>().signIn(),)
                             ],
                           ),
                         ),
