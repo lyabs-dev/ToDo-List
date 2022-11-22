@@ -31,6 +31,8 @@
   "signedSucces": "SIgned Successful",
   "passwordWeak": "Password is weak",
   "emailExists": "This email alrady exist",
+  "userExists": "This user alrady exist",
+  "usernameLeastCharacters": "Least Characters",
   "invalidEmail": "Invalid Email",
   "emailPasswordIncorrect": "email or password is Incorrect",
   "authFailed": "Authentification falled"
