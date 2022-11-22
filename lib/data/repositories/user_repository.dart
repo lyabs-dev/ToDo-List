@@ -28,6 +28,10 @@ class UserRepository {
     return UserItem.fromMap(map);
   }
 
+  Future<bool?> isUserExist(String username) async {
+    return await userProvider.isUserExist(username);
+  }
+
   Future<UserItem?> getFromAuthId(String authId) async {
     Map map = await userProvider.getFromAuthId(authId);
     return UserItem.fromMap(map);
