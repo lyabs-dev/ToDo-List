@@ -8,9 +8,9 @@ const FIELD_USER_NAME = 'name';
 const FIELD_USER_DOCUMENT = 'document';
 
 class UserItem {
-  final String authId;
+  String authId;
   String name;
-  final String email;
+  String email;
   DocumentSnapshot? document;
 
   UserItem({
