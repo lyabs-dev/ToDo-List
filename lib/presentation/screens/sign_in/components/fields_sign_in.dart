@@ -1,17 +1,17 @@
 import '../../../../utils/my_material.dart';
 
 class FieldSignIn extends StatelessWidget {
-  FieldSignIn({Key? key}) : super(key: key);
-  late TextEditingController textEditingController;
+  FieldSignIn({required this.emailEditingController,required this.passwordEditingController,Key? key}) : super(key: key);
+  late TextEditingController emailEditingController;
+  late TextEditingController passwordEditingController;
   @override
   Widget build(BuildContext context) {
-    textEditingController = TextEditingController();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         AppEditText(
           AppLocalizations.of(context)!.email,
-          textEditingController,
+          emailEditingController,
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 1.0, color: colorPrimary),
           ),
@@ -26,7 +26,7 @@ class FieldSignIn extends StatelessWidget {
         ),
         AppEditText(
           AppLocalizations.of(context)!.password,
-          textEditingController,
+          passwordEditingController,
           isPassword: true,
           enabledBorder: UnderlineInputBorder(
             borderSide: BorderSide(width: 1.0, color: colorPrimary),
