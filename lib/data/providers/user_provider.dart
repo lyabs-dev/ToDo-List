@@ -108,15 +108,17 @@ class UserProvider {
     return isExist;
   }
 
-  Future<Map<String, Object>> getCurrentUser() async {
-    Map<String, Object> result = {};
+  Future<Map<String, dynamic>> getCurrentUser() async {
+    Map<String, dynamic> result = {};
 
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? userString = prefs.getString(PREF_CURRENT_USER);
+    print("##############PRINTTTT $userString");
 
     if (userString != null) {
       try {
         result = json.decode(userString);
+        print("#################### TEST FINAL $result");
       } catch (err) {
         debugPrint("============Failed to get current user: $err");
       }
@@ -124,9 +126,12 @@ class UserProvider {
     return result;
   }
 
-  Future setCurrentUser(Map<String, Object> map) async {
+  Future setCurrentUser(Map<String, dynamic> map) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setString(PREF_CURRENT_USER, json.encode(map));
+
+
+    print("################MAMY TEST ${json.encode(map)}");
   }
 
 }
