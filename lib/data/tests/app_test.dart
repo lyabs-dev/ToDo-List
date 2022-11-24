@@ -6,8 +6,8 @@ class AppTest {
 
   static run() {
     //SettingsTest.run();
-    UserTest.run();
-    NoteTest.run();
+    //UserTest.run();
+    //NoteTest.run();
   }
 
 }
