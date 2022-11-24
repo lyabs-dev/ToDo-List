@@ -53,7 +53,10 @@ class MyApp extends StatelessWidget {
                       ),
                     );
                   }
+                  if(appState.user != null){
 
+                    return Home();
+                  }
                   return const WelcomePage();
                 },
               ),
