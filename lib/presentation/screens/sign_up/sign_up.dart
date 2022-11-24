@@ -16,8 +16,11 @@ class SignUp extends StatelessWidget {
       child: BlocListener<SignUpCubit,SignUpState>(
         listener: (context,state){
           if(state.responseCode != null) {
-            if(state.responseCode?.code == SignUpCode.Connected) {
-              Navigator.of(context).pushNamed(pageHome);
+            if(state.responseCode != null) {
+              if(state.user !=null && state.responseCode?.code == SignUpCode.Connected) {
+                context.read<AppCubit>().setUser(state.user!);
+                Navigator.of(context).pushNamed(pageHome);
+              }
             }
           }
         },
@@ -55,7 +58,7 @@ class SignUp extends StatelessWidget {
                                 emailEditingController: state.emailEditingController,
                                 passwordEditingController: state.passwordEditingController,
                               ),
-                              FooterPage(signIn: context.read<SignUpCubit>().signUp(),
+                              FooterPage(sign: context.read<SignUpCubit>().signUp,
                                 signUp: true,
                               )
                             ],
