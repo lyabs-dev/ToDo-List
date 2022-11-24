@@ -59,6 +59,7 @@ class SignInCubit extends Cubit<SignInState> {
       }
 
       state.user = user;
+      return SignInCode.Connected;
     } on FirebaseAuthException catch (e) {
        if (e.code == 'email-already-in-use') {
         return SignInCode.EmailExists;
@@ -72,8 +73,5 @@ class SignInCubit extends Cubit<SignInState> {
       debugPrint('============Signin error: $e');
       return SignInCode.AuthFailed;
     }
-
-    return null;
-
   }
 }
