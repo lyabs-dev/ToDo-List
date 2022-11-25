@@ -107,12 +107,11 @@ class _DetailNoteState extends State<DetailNote> {
                                     fontWeight: FontWeight.w600,
                                     fontSize: getProportionateScreenWidth(
                                         textSizeMedium, context))),
-                            (_infoNodeTitle || _infoNodeDescription)
-                                ? InkWell(
+                            (_infoNodeTitle || _infoNodeDescription) ? InkWell(
                               onTap: () {
-                                _focusTitle.unfocus();
-                                _focusDescription.unfocus();
-
+                                //_focusTitle.unfocus();
+                                //_focusDescription.unfocus();
+                                context.read<NoteCubit>().createNote();
                               },
                               child: Icon(
                                 Icons.check,
