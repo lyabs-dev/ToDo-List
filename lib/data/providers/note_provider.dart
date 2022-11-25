@@ -68,6 +68,23 @@ class NoteProvider {
     return map;
   }
 
+  //check if username already exists
+  Future<bool?> isTitleExist(String title) async {
+    bool? isExist;
+
+    try {
+      var result = await FirebaseFirestore.instance.collection(COLLECTION_NOTE)
+          .where(FIELD_NOTE_TITLE, isEqualTo: title.toLowerCase())
+          .get();
+      isExist = result.docs.isNotEmpty;
+    }
+    catch (err) {
+      debugPrint('=======Failed to check if user exists: $err');
+    }
+
+    return isExist;
+  }
+
   Future<bool> update(String docId, Map<String, Object> map) async {
     try {
       await FirebaseFirestore.instance
