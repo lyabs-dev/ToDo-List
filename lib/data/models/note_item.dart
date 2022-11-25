@@ -12,11 +12,11 @@ const FIELD_NOTE_DOCUMENT = 'document';
 
 
 class NoteItem {
-  final String userId;
+  String userId;
   String title;
   String description;
   DateTime dateTime;
-  final DateTime creationDate;
+  DateTime creationDate;
   bool remind;
   DocumentSnapshot? document;
 
