@@ -24,6 +24,10 @@ class NoteRepository {
     return notes ;
   }
 
+  Future<bool?> isTitleExist(String title) async {
+    return await provider.isTitleExist(title);
+  }
+
   Future<NoteItem?> getNote(String docId,{enableCache:false})async{
     Map map = await provider.getNote(docId);
     print('********Lina**********');
