@@ -3,21 +3,28 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_structure/logic/cubits/note_cubit.dart';
 import 'package:flutter_structure/logic/states/note_state.dart';
+import '../../../data/models/note_item.dart';
 import '../../../utils/my_material.dart';
 
 class DetailNote extends StatefulWidget {
-  DetailNote({Key? key}) : super(key: key);
+
+  NoteItem? note;
+
+  DetailNote({Key? key,this.note}) : super(key: key);
 
   @override
-  State<DetailNote> createState() => _DetailNoteState();
+  State<DetailNote> createState() => _DetailNoteState(note:note);
 }
 
 class _DetailNoteState extends State<DetailNote> {
+  NoteItem? note;
   bool _infoNodeTitle = false;
   bool _infoNodeDescription = false;
 
   FocusNode _focusTitle = new FocusNode();
   FocusNode _focusDescription = new FocusNode();
+
+  _DetailNoteState({this.note});
 
   @override
   void initState() {
@@ -54,7 +61,7 @@ class _DetailNoteState extends State<DetailNote> {
   }
 
   late TextEditingController titleController;
-  late TextEditingController textEditingController;
+  late TextEditingController descriptionController;
 
   DateTime _dateTime = DateTime.now();
   bool dateChange = false;
@@ -67,8 +74,8 @@ class _DetailNoteState extends State<DetailNote> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    textEditingController = TextEditingController();
-    titleController = TextEditingController();
+    descriptionController = TextEditingController(text: note?.description);
+    titleController = TextEditingController(text: note?.description);
     return BlocProvider<NoteCubit>(
         create: (context) => NoteCubit(NoteState()),
       child: BlocListener<NoteCubit,NoteState>(
@@ -155,7 +162,7 @@ class _DetailNoteState extends State<DetailNote> {
                               Expanded(
                                 child: AppEditText(
                                   AppLocalizations.of(context)!.title,
-                                  state.titleEditingController,
+                                  state.titleEditingController = titleController ,
                                   focusNode: _focusTitle,
                                   hintStyle: TextStyle(
                                       color: colorPrimary,
@@ -285,7 +292,7 @@ class _DetailNoteState extends State<DetailNote> {
                           Expanded(
                               child: AppEditText(
                                 AppLocalizations.of(context)!.description,
-                                state.descriptionEditingController,
+                                state.descriptionEditingController = descriptionController,
                                 focusNode: _focusDescription,
                                 style: TextStyle(color: colorPrimary),
                                 hintStyle: TextStyle(color: colorPrimary),
