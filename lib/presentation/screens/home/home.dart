@@ -1,5 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_structure/data/models/note_item.dart';
+import 'package:flutter_structure/data/models/user_item.dart';
 import 'package:flutter_structure/logic/cubits/home_cubit.dart';
 import 'package:flutter_structure/logic/states/home_state.dart';
 import 'package:flutter_structure/presentation/screens/home/components/notes.dart';
@@ -8,7 +9,8 @@ import 'package:intl/intl.dart';
 import '../../../utils/my_material.dart';
 
 class Home extends StatelessWidget {
-   Home({Key? key}) : super(key: key);
+  UserItem user;
+   Home(this.user,{Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +53,7 @@ class Home extends StatelessWidget {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              MyText(AppLocalizations.of(context)!.goodMorning,
+                              MyText(AppLocalizations.of(context)!.goodMorning + '\n${user.name}',
                                   style: TextStyle(
                                       color: buttonColor,
                                       fontWeight: FontWeight.w700,
