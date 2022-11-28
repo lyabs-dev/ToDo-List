@@ -1,10 +1,13 @@
+import 'package:flutter_structure/data/models/note_item.dart';
+
 import '../../../../utils/my_material.dart';
 
 class Notes extends StatelessWidget {
+  final NoteItem? note;
   final bool reminder;
   final String? title, tacks, date;
   const Notes(
-      {Key? key, this.reminder = false, this.title, this.date, this.tacks})
+      {Key? key,this.note, this.reminder = false, this.title, this.date, this.tacks})
       : super(key: key);
 
   @override
@@ -18,7 +21,7 @@ class Notes extends StatelessWidget {
           customBorder:
               RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
           onTap: () {
-            Navigator.of(context).pushNamed(pageDetailNote);
+            Navigator.of(context).pushNamed(pageDetailNote,arguments: {ARGUMENT_NOTE: note});
           },
           highlightColor: colorPrimaryLight,
           hoverColor: colorWhite,
