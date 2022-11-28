@@ -30,6 +30,7 @@
   "calendar":"Calendar",
   "fieldRequired": "Field can't be empty",
   "signedSucces": "SIgned Successful",
+  "emptyNote": "Empty",
   "created": "note created with success",
   "passwordWeak": "Password is weak",
   "emailExists": "This email alrady exist",
