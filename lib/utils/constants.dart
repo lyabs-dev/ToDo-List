@@ -20,6 +20,7 @@ const PREF_CURRENT_USER = 'current_user';
 /// PAGES ARGUMENTS
 const argumentId = 'id';
 const argumentIsNOAnimation = 'is_no_animation';
+const ARGUMENT_NOTE = 'note';
 
 /// SETTINGS FIELD
 const settingIsDarkMode = 'is_dark_mode';
