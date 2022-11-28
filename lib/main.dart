@@ -55,7 +55,7 @@ class MyApp extends StatelessWidget {
                   }
                   if(appState.user != null){
 
-                    return Home();
+                    return Home(appState.user!);
                   }
                   return const WelcomePage();
                 },
