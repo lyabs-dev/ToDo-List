@@ -21,6 +21,7 @@ const PREF_CURRENT_USER = 'current_user';
 const argumentId = 'id';
 const argumentIsNOAnimation = 'is_no_animation';
 const ARGUMENT_NOTE = 'note';
+const ARGUMENT_USER = 'user';
 
 /// SETTINGS FIELD
 const settingIsDarkMode = 'is_dark_mode';
