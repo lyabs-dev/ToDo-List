@@ -22,7 +22,9 @@ class AppRouter {
         page = const SignUp();
         break;
       case pageDetailNote:
-        page =  DetailNote();
+        page =  DetailNote(
+          note: arguments?[ARGUMENT_NOTE],
+        );
         break;
       case pageCalendar:
         page =  Calendar();
