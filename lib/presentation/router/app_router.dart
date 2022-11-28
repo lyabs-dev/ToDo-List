@@ -13,7 +13,9 @@ class AppRouter {
         page = const WelcomePage();
         break;
       case pageHome:
-        page =  Home();
+        page =  Home(
+            arguments?[ARGUMENT_USER]
+        );
         break;
       case pageSignIn:
         page = const SignIn();
