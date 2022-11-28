@@ -38,6 +38,7 @@ class NoteCubit extends Cubit<NoteState> {
 
   Future<NoteCode?> _processCreateNote() async {
     if (state.titleEditingController.text.isEmpty || state.descriptionEditingController.text.isEmpty) {
+      showMessage(NoteCode.FillRequiredFields);
       return NoteCode.FillRequiredFields;
     }
 
@@ -46,6 +47,7 @@ class NoteCubit extends Cubit<NoteState> {
     //check if title is available
     bool? isExist = await noteRepository.isTitleExist(state.titleEditingController.text);
     if (isExist == null || isExist) {
+      showMessage(NoteCode.TitleExist);
       return NoteCode.TitleExist;
     }
 
@@ -61,12 +63,23 @@ class NoteCubit extends Cubit<NoteState> {
     print(note);
     DocumentSnapshot? doc = await noteRepository.add(note);
     if(doc == null){
+      showMessage(NoteCode.Error);
       return NoteCode.Error;
     }
 
     state.note = note;
-    print("############## NOTE ${note}");
+    showMessage(NoteCode.Created);
     return NoteCode.Created;
+  }
+
+  showMessage(NoteCode code , {messageType: MessageType.toast}) async {
+    await Future.delayed(Duration(milliseconds: 200));
+    state.isLoading = false;
+    state.responseCode = NoteResponse(
+      code: code,
+      messageType: messageType,
+    );
+    emit(state.copy());
   }
 
 }
