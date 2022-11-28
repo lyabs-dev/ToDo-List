@@ -1,4 +1,9 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_structure/data/models/note_item.dart';
+import 'package:flutter_structure/logic/cubits/home_cubit.dart';
+import 'package:flutter_structure/logic/states/home_state.dart';
 import 'package:flutter_structure/presentation/screens/home/components/notes.dart';
+import 'package:intl/intl.dart';
 
 import '../../../utils/my_material.dart';
 
@@ -6,146 +11,167 @@ class Home extends StatelessWidget {
    Home({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) { List<Note> listNotes = [
-    Note(true, "", "Pay credit card bills amount \$450", "23 juil"),
-    Note(false, "Grocery list", "Milk\nBread\nVeggies\nEgg\nFruits\nShakes", "25 dec"),
-    Note(false, "Figma", "Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes", "2 sept"),
-    Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
-    Note(false, "", "Pay credit card bills amount \$450", "23 juil"),
-    Note(false, "Grocery list", "Milk\nBread\nVeggies\nEgg\nFruits\nShakes", "25 dec"),
-    Note(true, "Figma", "Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes", "2 sept"),
-    Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
-  ];
+  Widget build(BuildContext context) {
+  //   List<Note> listNotes = [
+  //   Note(true, "", "Pay credit card bills amount \$450", "23 juil"),
+  //   Note(false, "Grocery list", "Milk\nBread\nVeggies\nEgg\nFruits\nShakes", "25 dec"),
+  //   Note(false, "Figma", "Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes", "2 sept"),
+  //   Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
+  //   Note(false, "", "Pay credit card bills amount \$450", "23 juil"),
+  //   Note(false, "Grocery list", "Milk\nBread\nVeggies\nEgg\nFruits\nShakes", "25 dec"),
+  //   Note(true, "Figma", "Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes Deliver files export save in drive Egg Fruits Shakes", "2 sept"),
+  //   Note(false, "Reply mails", "Mails \nFruits \nShakes", "25 dec"),
+  // ];
+
+    List<NoteItem?> listNotes;
 
   DateTime dateTime = DateTime.now();
 
-  return Scaffold(
-      body: Stack(
-        children: [
-          SafeArea(
-            child: Container(
-              color: colorWhite,
+  return BlocProvider<HomeCubit>(
+      create: (context) => HomeCubit(HomeState()),
+    child: BlocListener<HomeCubit,HomeState>(
+      listener: (context,state){
 
-              child: Column(
-                children: [
-                  Padding(
-                    padding: EdgeInsets.all(textSizeLargeMedium),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
+      },
+      child: BlocBuilder<HomeCubit,HomeState>(
+        builder: (context,state){
+          listNotes = state.notes;
+          return Scaffold(
+            body: Stack(
+              children: [
+                SafeArea(
+                  child: Container(
+                    color: colorWhite,
+
+                    child: Column(
                       children: [
-                        MyText(AppLocalizations.of(context)!.goodMorning,
-                            style: TextStyle(
-                                color: buttonColor,
-                                fontWeight: FontWeight.w700,
-                                fontSize: getProportionateScreenWidth(
-                                    textSizeLarge, context))),
-                        Container(
-                          width: 50,
-                          height: 50,
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(15),
-                              image: DecorationImage(
-                                  image: AssetImage(PathImage.user),
-                                  filterQuality: FilterQuality.high,
-                                  fit: BoxFit.cover)),
-                        )
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(textSizeLargeMedium),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                            Image(
-                              image: AssetImage(PathIcons.calendar),
-                              filterQuality: FilterQuality.high,
-                              height: 25,
-                            ),
-                            SizedBox(
-                              width: getShortSize(10, context),
-                            ),
-                            Card(
-                              elevation: 5,
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(15.0),
+                        Padding(
+                          padding: EdgeInsets.all(textSizeLargeMedium),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              MyText(AppLocalizations.of(context)!.goodMorning,
+                                  style: TextStyle(
+                                      color: buttonColor,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: getProportionateScreenWidth(
+                                          textSizeLarge, context))),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(15),
+                                    image: DecorationImage(
+                                        image: AssetImage(PathImage.user),
+                                        filterQuality: FilterQuality.high,
+                                        fit: BoxFit.cover)),
+                              )
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.all(textSizeLargeMedium),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Row(
+                                children: [
+                                  Image(
+                                    image: AssetImage(PathIcons.calendar),
+                                    filterQuality: FilterQuality.high,
+                                    height: 25,
+                                  ),
+                                  SizedBox(
+                                    width: getShortSize(10, context),
+                                  ),
+                                  Card(
+                                    elevation: 5,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                    ),
+                                    child: AppButton(
+                                      "${formatDate(dateTime,"MMMd")}",
+                                          () {
+                                        Navigator.of(context).pushNamed(pageCalendar);
+                                      },
+                                      primaryColor: colorWhite,
+                                      textColor: colorPrimary,
+                                      borderRadius: 20,
+                                      paddingVertical: 5,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              child: AppButton(
-                                "${formatDate(dateTime,"MMMd")}",
-                                () {
-                                  Navigator.of(context).pushNamed(pageCalendar);
-                                },
-                                primaryColor: colorWhite,
-                                textColor: colorPrimary,
+                              AppButton(
+                                "${state.noteNumber} Notes",
+                                    () {},
+                                whitIcons: true,
+                                paddingVertical: 7,
                                 borderRadius: 20,
-                                paddingVertical: 5,
+                                fontSize: textSizeSMedium,
+                                icon: Image(
+                                  image: AssetImage(PathIcons.graph),
+                                  height: 15,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: getShortSize(10, context),
+                        ),
+                        Expanded(
+                          child: CustomScrollView(
+                            slivers: [
+                              SliverList(
+                                delegate: SliverChildListDelegate([]),
                               ),
-                            ),
-                          ],
-                        ),
-                        AppButton(
-                          "${listNotes.length} Notes",
-                          () {},
-                          whitIcons: true,
-                          paddingVertical: 7,
-                          borderRadius: 20,
-                          fontSize: textSizeSMedium,
-                          icon: Image(
-                            image: AssetImage(PathIcons.graph),
-                            height: 15,
+                              SliverGrid.count(
+                                childAspectRatio:
+                                getProportionateScreenWidth(5.2, context) /
+                                    getProportionateScreenWidth(7, context),
+                                children: List.generate(
+                                  state.notes.length,
+                                      (index) => Notes(
+                                        note: listNotes[index],
+                                        reminder: listNotes[index]!.remind,
+                                        title:listNotes[index]?.title ,
+                                        tacks:listNotes[index]?.description ,
+                                        date:DateFormat('d MMM').format(listNotes[index]!.creationDate) ),
+                                ),
+                                crossAxisCount: 2,
+                              ),
+                            ],
                           ),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: getShortSize(10, context),
-                  ),
-                  Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverList(
-                          delegate: SliverChildListDelegate([]),
-                        ),
-                        SliverGrid.count(
-                          childAspectRatio:
-                              getProportionateScreenWidth(5.2, context) /
-                                  getProportionateScreenWidth(7, context),
-                          children: List.generate(
-                            listNotes.length,
-                            (index) => Notes(reminder: listNotes[index].reminder,title:listNotes[index].title ,tacks:listNotes[index].tacks ,date:listNotes[index].date ,),
-                          ),
-                          crossAxisCount: 2,
                         ),
                       ],
                     ),
                   ),
-                ],
-              ),
+                ),
+                Align(
+                  alignment: Alignment.topRight,
+                  child: Image(
+                    image: AssetImage(PathImage.home),
+                    filterQuality: FilterQuality.high,
+                    fit: BoxFit.fitHeight,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Align(
+                      alignment: Alignment.bottomCenter,
+                      child: CircleButton(Icons.add, () {
+                        Navigator.of(context).pushNamed(pageDetailNote);
+                      }, iconColor: colorPrimary,)),
+                )
+              ],
             ),
-          ),
-          Align(
-            alignment: Alignment.topRight,
-            child: Image(
-              image: AssetImage(PathImage.home),
-              filterQuality: FilterQuality.high,
-              fit: BoxFit.fitHeight,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.only(bottom: 20),
-            child: Align(
-                alignment: Alignment.bottomCenter,
-                child: CircleButton(Icons.add, () {
-                  Navigator.of(context).pushNamed(pageDetailNote);
-                  }, iconColor: colorPrimary,)),
-          )
-        ],
+          );
+        },
       ),
-    );
+    ),
+  );
   }
 }
 
