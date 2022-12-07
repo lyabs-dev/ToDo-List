@@ -20,6 +20,23 @@ class NoteProvider {
     return query;
   }
 
+  static Query queryGetUserNotes(String userid,DocumentSnapshot? startAfter, int? limit) {
+    Query query = FirebaseFirestore.instance.collection(COLLECTION_NOTE)
+      .where(FIELD_USER_ID, isEqualTo: userid)
+      .orderBy(FIELD_NOTE_CREATION_DATE, descending: true);
+
+    if (startAfter != null) {
+      query = query.startAfterDocument(startAfter);
+    }
+
+    if (limit != null) {
+      query = query.limit(limit);
+    }
+    return query;
+  }
+
+
+
   Future<DocumentSnapshot?> add(Map<String, Object> map) async {
     DocumentSnapshot? document;
     try {
@@ -49,6 +66,25 @@ class NoteProvider {
     }
     return list;
   }
+
+  Future<List<Map>> getUserNotes(String userId,{DocumentSnapshot? startAfter, int? limit}) async {
+    List<Map> list = [];
+
+    try {
+      var result = await queryGetUserNotes(userId,startAfter, limit).get();
+      if (result.docs.isNotEmpty) {
+        for (DocumentSnapshot document in result.docs) {
+          Map map = document.data() as Map;
+          map[FIELD_NOTE_DOCUMENT] = document;
+          list.add(map);
+        }
+      }
+    } catch (err) {
+      debugPrint('=========Failed to get posts: $err');
+    }
+    return list;
+  }
+
 
   Future<Map> getNote(String documentId) async {
     Map map = {};
