@@ -19,6 +19,7 @@ class SignUpCubit extends Cubit<SignUpState> {
 
   signUp() async {
     state.isLoading = true;
+    state.responseCode = null;
     emit(state.copy());
 
     await _proccessSignUp();
@@ -28,14 +29,17 @@ class SignUpCubit extends Cubit<SignUpState> {
   Future<SignUpCode?> _proccessSignUp() async {
     if (state.emailEditingController.text.isEmpty || state.passwordEditingController.text.isEmpty ||
         state.usernameEditingController.text.isEmpty) {
+      showMessage(SignUpCode.FillRequiredFields);
       return SignUpCode.FillRequiredFields;
     }
 
     if (!RegExp(REG_EMAIL_VALID).hasMatch(state.emailEditingController.text)) {
+      showMessage(SignUpCode.InvalidEmail);
       return SignUpCode.InvalidEmail;
     }
 
     if (state.usernameEditingController.text.length < 2) {
+      showMessage(SignUpCode.UsernameLeastCharacters);
       return SignUpCode.UsernameLeastCharacters;
     }
 
@@ -58,9 +62,8 @@ class SignUpCubit extends Cubit<SignUpState> {
       }
 
       UserItem user = UserItem(
-        email: state.emailEditingController.text, name: state.usernameEditingController.text.toLowerCase(),
-        authId: userCredential.user!.uid,);
-      // user.createdDate = DateTime.now();
+        email: state.emailEditingController.text.toLowerCase(), name: state.usernameEditingController.text.toLowerCase(),
+        authId: userCredential.user!.uid);
 
       DocumentSnapshot? document = await repository.add(user);
       if (document == null) {
