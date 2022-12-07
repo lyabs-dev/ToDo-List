@@ -124,13 +124,14 @@ class Home extends StatelessWidget {
                         height: getShortSize(10, context),
                       ),
                       if(state.loadingState)
-                        Center(
-                          child: CircularProgressIndicator(),
+                        Expanded(
+                          child: Center(
+                            child: CircularProgressIndicator(),
+                          ),
                         )
                       else
                         Expanded(
-                          child: CustomScrollView(
-                            //if(state.notes){}
+                          child: state.notes.isNotEmpty?CustomScrollView(
                             slivers: [
                               SliverList(
                                 delegate: SliverChildListDelegate([]),
@@ -153,6 +154,13 @@ class Home extends StatelessWidget {
                                 crossAxisCount: 2,
                               ),
                             ],
+                          ): Center(
+                            child: MyText("Empty",
+                                style: TextStyle(
+                                    color: buttonColor,
+                                    fontWeight: FontWeight.w700,
+                                    fontSize: getProportionateScreenWidth(
+                                        textSizeLarge, context))),
                           ),
                         ),
                     ],
