@@ -19,27 +19,20 @@ class SignInCubit extends Cubit<SignInState> {
     state.isLoading = true;
     emit(state.copy());
 
-    SignInCode? code;
+    await _signInWithEmail();
 
-        code = await _signInWithEmail();
-
-    state.isLoading = false;
-
-    if (code != null) {
-      state.responseCode = SignInResponse(code: code, messageType: MessageType.toast) ;
-    }
-
-    emit(state.copy());
   }
 
 
   Future<SignInCode?> _signInWithEmail() async {
 
     if (state.emailEditingController.text.isEmpty || state.passwordEditingController.text.isEmpty) {
+      showMessage(SignInCode.FillRequiredFields);
       return SignInCode.FillRequiredFields;
     }
 
     if (!RegExp(REG_EMAIL_VALID).hasMatch(state.emailEditingController.text)) {
+      showMessage(SignInCode.InvalidEmail);
       return SignInCode.InvalidEmail;
     }
 
@@ -50,28 +43,45 @@ class SignInCubit extends Cubit<SignInState> {
       );
 
       if (userCredential.user == null) {
+        showMessage(SignInCode.EmailPasswordIncorrect);
         return SignInCode.EmailPasswordIncorrect;
       }
 
       UserItem? user = await repository.getFromEmail(state.emailEditingController.text.toLowerCase());
       if (user == null) {
+        showMessage(SignInCode.AuthFailed);
         return SignInCode.AuthFailed;
       }
 
       state.user = user;
+      showMessage(SignInCode.Connected);
       return SignInCode.Connected;
+
     } on FirebaseAuthException catch (e) {
        if (e.code == 'email-already-in-use') {
-        return SignInCode.EmailExists;
+         showMessage(SignInCode.EmailExists);
+         return SignInCode.EmailExists;
       } else if (e.code == 'invalid-email') {
-        return SignInCode.InvalidEmail;
+         showMessage(SignInCode.InvalidEmail);
+         return SignInCode.InvalidEmail;
       }
 
       debugPrint('=====${e.code}=======Failed sign In Firebase: $e');
-      return SignInCode.EmailPasswordIncorrect;
+       showMessage(SignInCode.EmailPasswordIncorrect,messageType: MessageType.dialog);
+       return SignInCode.EmailPasswordIncorrect;
     } catch (e) {
       debugPrint('============Signin error: $e');
       return SignInCode.AuthFailed;
     }
+  }
+
+  showMessage(SignInCode code , {messageType: MessageType.toast}) async {
+    await Future.delayed(Duration(milliseconds: 200));
+    state.isLoading = false;
+    state.responseCode = SignInResponse(
+      code: code,
+      messageType: messageType,
+    );
+    emit(state.copy());
   }
 }
