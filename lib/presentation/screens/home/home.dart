@@ -123,32 +123,38 @@ class Home extends StatelessWidget {
                       SizedBox(
                         height: getShortSize(10, context),
                       ),
-                      Expanded(
-                        child: CustomScrollView(
-                          slivers: [
-                            SliverList(
-                              delegate: SliverChildListDelegate([]),
-                            ),
-                            SliverGrid.count(
-                              childAspectRatio:
-                              getProportionateScreenWidth(5.2, context) /
-                                  getProportionateScreenWidth(7, context),
-                              children: List.generate(
-                                state.notes.length,
-                                    (index) => Notes(
-                                  note: listNotes[index],
-                                  reminder: listNotes[index]!.remind,
-                                  title:listNotes[index]?.title ,
-                                  tacks:listNotes[index]?.description ,
-                                  date:formatDate(listNotes[index]!.creationDate, "d MMM"),
-                                  //onLongPress: context.read<HomeCubit>().deleteNote(listNotes[index]!),
-                                ),
+                      if(state.loadingState)
+                        Center(
+                          child: CircularProgressIndicator(),
+                        )
+                      else
+                        Expanded(
+                          child: CustomScrollView(
+                            //if(state.notes){}
+                            slivers: [
+                              SliverList(
+                                delegate: SliverChildListDelegate([]),
                               ),
-                              crossAxisCount: 2,
-                            ),
-                          ],
+                              SliverGrid.count(
+                                childAspectRatio:
+                                getProportionateScreenWidth(5.2, context) /
+                                    getProportionateScreenWidth(7, context),
+                                children: List.generate(
+                                  state.notes.length,
+                                      (index) => Notes(
+                                    note: listNotes[index],
+                                    reminder: listNotes[index]!.remind,
+                                    title:listNotes[index]?.title ,
+                                    tacks:listNotes[index]?.description ,
+                                    date:formatDate(listNotes[index]!.creationDate, "d MMM"),
+                                    //onLongPress: context.read<HomeCubit>().deleteNote(listNotes[index]!),
+                                  ),
+                                ),
+                                crossAxisCount: 2,
+                              ),
+                            ],
+                          ),
                         ),
-                      ),
                     ],
                   ),
                 ),
