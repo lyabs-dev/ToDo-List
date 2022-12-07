@@ -21,15 +21,8 @@ class SignUpCubit extends Cubit<SignUpState> {
     state.isLoading = true;
     emit(state.copy());
 
-    SignUpCode? code = await _proccessSignUp();
+    await _proccessSignUp();
 
-    state.isLoading = false;
-
-    if (code != null) {
-      state.responseCode = SignUpResponse(code: code, messageType: MessageType.dialog);
-    }
-
-    emit(state.copy());
   }
 
   Future<SignUpCode?> _proccessSignUp() async {
@@ -49,6 +42,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     //check if username is available
     bool? isExist = await repository.isUserExist(state.usernameEditingController.text);
     if (isExist == null || isExist) {
+      showMessage(SignUpCode.UsernameExist);
       return SignUpCode.UsernameExist;
     }
 
@@ -59,6 +53,7 @@ class SignUpCubit extends Cubit<SignUpState> {
       );
 
       if (userCredential.user == null) {
+        showMessage(SignUpCode.Error);
         return SignUpCode.Error;
       }
 
@@ -75,13 +70,17 @@ class SignUpCubit extends Cubit<SignUpState> {
       user.authId = document.id;
 
       state.user = user;
+      showMessage(SignUpCode.Connected);
       return SignUpCode.Connected;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
+        showMessage(SignUpCode.PasswordWeak);
         return SignUpCode.PasswordWeak;
       } else if (e.code == 'email-already-in-use') {
+        showMessage(SignUpCode.EmailExists);
         return SignUpCode.EmailExists;
       } else if (e.code == 'invalid-email') {
+        showMessage(SignUpCode.InvalidEmail);
         return SignUpCode.InvalidEmail;
       }
 
@@ -91,7 +90,16 @@ class SignUpCubit extends Cubit<SignUpState> {
       debugPrint('============Signup error: $e');
       return SignUpCode.Error;
     }
-    return null;
+  }
+
+  showMessage(SignUpCode code , {messageType: MessageType.toast}) async {
+    await Future.delayed(Duration(milliseconds: 200));
+    state.isLoading = false;
+    state.responseCode = SignUpResponse(
+      code: code,
+      messageType: messageType,
+    );
+    emit(state.copy());
   }
 }
 
