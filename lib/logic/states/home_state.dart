@@ -30,7 +30,9 @@ class HomeState {
 enum HomeCode {
   Error,
   EmptyNote,
-  Success
+  Success,
+  WantDeleted,
+  Deleted,
 }
 
 class HomeResponse extends ResponseCodeItem {
@@ -50,6 +52,10 @@ class HomeResponse extends ResponseCodeItem {
         return AppLocalizations.of(context)!.error;
       case HomeCode.Success:
         return AppLocalizations.of(context)!.success;
+      case HomeCode.Deleted:
+        return AppLocalizations.of(context)!.deleted;
+      case HomeCode.WantDeleted:
+        return AppLocalizations.of(context)!.wantDeleted;
     }
   }
 
@@ -60,8 +66,10 @@ class HomeResponse extends ResponseCodeItem {
       case HomeCode.Error:
         return DialogType.error;
       case HomeCode.EmptyNote:
+      case HomeCode.WantDeleted:
         return DialogType.info;
       case HomeCode.Success:
+      case HomeCode.Deleted:
         return DialogType.success;
     }
   }
