@@ -11,10 +11,10 @@ class NoteRepository {
     return await provider.add(note.toMap());
   }
 
-  Future<List<NoteItem>> getNotes({DocumentSnapshot? startAfter, int? limit})async{
+  Future<List<NoteItem>> getNotes(String userId,{DocumentSnapshot? startAfter, int? limit})async{
     List<NoteItem> notes = [];
 
-    List<Map> list = await provider.getNotes(limit: limit, startAfter: startAfter);
+    List<Map> list = await provider.getUserNotes(userId,limit: limit, startAfter: startAfter);
     for(Map map in list){
       NoteItem? note = NoteItem.fromMap(map);
       if(note != null){
