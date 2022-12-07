@@ -1,5 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_structure/logic/cubits/home_cubit.dart';
+import 'package:flutter_structure/logic/states/home_state.dart';
 import 'package:flutter_structure/utils/my_material.dart';
 
 import 'firebase_options.dart';
@@ -23,6 +25,9 @@ class MyApp extends StatelessWidget {
 
     return MultiBlocProvider(
       providers: [
+        BlocProvider<HomeCubit>(
+            create: (context) =>  HomeCubit(HomeState())
+        ),
         BlocProvider<SettingsCubit>(
           create: (context) => SettingsCubit(SettingsState(settings))
         ),
