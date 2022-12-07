@@ -19,7 +19,7 @@ class SignUp extends StatelessWidget {
             if(state.responseCode != null) {
               if(state.user !=null && state.responseCode?.code == SignUpCode.Connected) {
                 context.read<AppCubit>().setUser(state.user!);
-                Navigator.of(context).pushNamed(pageHome);
+                Navigator.of(context).pushNamed(pageHome,arguments: {ARGUMENT_USER: state.user!});
               }
             }
           }
