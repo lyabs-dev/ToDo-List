@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../logic/cubits/sign_in_cubit.dart';
 import '../../../logic/states/sign_in_state.dart';
 import '../../../utils/my_material.dart';
+import '../../components/response_code_widget.dart';
 import 'components/fields_sign_in.dart';
 
 class SignIn extends StatelessWidget {
@@ -18,8 +19,9 @@ class SignIn extends StatelessWidget {
             if(state.responseCode != null) {
               if(state.user !=null && state.responseCode?.code == SignInCode.Connected) {
                 context.read<AppCubit>().setUser(state.user!);
-                Navigator.of(context).pushNamed(pageHome);
+                Navigator.of(context).pushNamed(pageHome,arguments: {ARGUMENT_USER: state.user!});
               }
+              ResponseCodeWidget(context: context,item: state.responseCode!).show();
             }
           },
           child: BlocBuilder<SignInCubit,SignInState>(
@@ -56,7 +58,11 @@ class SignIn extends StatelessWidget {
                                     emailEditingController:state.emailEditingController,
                                     passwordEditingController:state.passwordEditingController
                                 ),
-                                FooterPage(sign: context.read<SignInCubit>().signIn)
+                                if (state.isLoading)
+                                  Center(
+                                    child: CircularProgressIndicator(),
+                                  )
+                                else FooterPage(sign: context.read<SignInCubit>().signIn),
                               ],
                             ),
                           ),
