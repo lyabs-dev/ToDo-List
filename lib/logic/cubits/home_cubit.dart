@@ -19,17 +19,17 @@ class HomeCubit extends Cubit<HomeState>{
     state.loadingState = true;
     emit(state.copy());
 
+    await _gettingNotes();
 
-    HomeCode? code = await _gettingNotes();
+  }
+
+  showMessage(HomeCode code , {messageType: MessageType.toast}) async {
+    await Future.delayed(Duration(milliseconds: 200));
     state.loadingState = false;
-    
-    print("**************####THE CODE $code");
-
-    if(code != null) {
-      state.responseCode = HomeResponse(code: code, messageType: MessageType.toast) ;
-      
-    }
-
+    state.responseCode = HomeResponse(
+      code: code,
+      messageType: messageType,
+    );
     emit(state.copy());
   }
 
@@ -38,15 +38,42 @@ class HomeCubit extends Cubit<HomeState>{
     try{
       List<NoteItem?> notes = await noteRepository.getNotes();
       if(notes.isEmpty)  {
+        showMessage(HomeCode.EmptyNote,messageType: MessageType.toast);
         return HomeCode.EmptyNote;
       }
 
       state.notes = notes;
       state.noteNumber = state.notes.length;
+      showMessage(HomeCode.Success,messageType: MessageType.toast);
       return HomeCode.Success;
 
     } on FirebaseException catch (e) {
+      showMessage(HomeCode.Error,messageType: MessageType.toast);
       return HomeCode.Error;
+    }
+  }
+
+  deleteNote() {
+    showMessage(HomeCode.WantDeleted,messageType: MessageType.dialog);
+    print("******### I change THE MESSAGE ####*******");
+  }
+
+  _processDeleteNote(NoteItem note) async {
+    try{
+      bool isDelete = await noteRepository.delete(note);
+      state.loadingState = true;
+      emit(state.copy());
+
+
+      if(isDelete){
+        state.loadingState = false;
+        showMessage(HomeCode.Deleted);
+        emit(state.copy());
+      }
+
+    }on FirebaseException catch (e) {
+      showMessage(HomeCode.Error);
+      emit(state.copy());
     }
   }
 
