@@ -60,7 +60,11 @@ class SignUp extends StatelessWidget {
                               ),
                               FooterPage(sign: context.read<SignUpCubit>().signUp,
                                 signUp: true,
-                              )
+                              ),
+                              if (state.isLoading)
+                                Center(
+                                  child: CircularProgressIndicator(),
+                                )
                             ],
                           ),
                         ),
