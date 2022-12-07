@@ -17,6 +17,7 @@ class SignInCubit extends Cubit<SignInState> {
 
   signIn() async {
     state.isLoading = true;
+    state.responseCode = null;
     emit(state.copy());
 
     await _signInWithEmail();
