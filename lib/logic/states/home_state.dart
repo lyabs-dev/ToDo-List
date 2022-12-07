@@ -1,5 +1,6 @@
 import '../../data/models/note_item.dart';
 import '../../data/models/response_code_item.dart';
+import '../../data/models/user_item.dart';
 import '../../utils/my_material.dart';
 
 class HomeState {
@@ -9,13 +10,15 @@ class HomeState {
   DateTime? sortingDate;
   HomeResponse? responseCode;
   bool loadingState;
+  UserItem? currentUser;
 
 
-  HomeState({this.loadingState= true,this.responseCode,this.sortingDate,this.noteNumber = 0 ,this.notes = const [], this.currentNote});
+  HomeState({this.currentUser,this.loadingState= true,this.responseCode,this.sortingDate,this.noteNumber = 0 ,this.notes = const [], this.currentNote});
 
   HomeState copy() {
     HomeState copy = HomeState(
         loadingState: loadingState,
+        currentUser: currentUser,
         responseCode: responseCode,
         currentNote: currentNote,
         sortingDate: sortingDate,

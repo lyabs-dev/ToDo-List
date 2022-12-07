@@ -4,11 +4,13 @@ import 'package:flutter_structure/data/models/note_item.dart';
 import 'package:flutter_structure/logic/states/home_state.dart';
 
 import '../../data/repositories/note_repository.dart';
+import '../../data/repositories/user_repository.dart';
 import '../../utils/enums.dart';
 
 class HomeCubit extends Cubit<HomeState>{
 
   NoteRepository noteRepository = NoteRepository();
+  UserRepository userRepository = UserRepository();
 
   HomeCubit(HomeState initialState): super(initialState){
     intiData();
@@ -17,10 +19,10 @@ class HomeCubit extends Cubit<HomeState>{
 
   intiData() async {
     state.loadingState = true;
+    state.currentUser = await userRepository.getCurrentUser();
     emit(state.copy());
 
-    await _gettingNotes();
-
+    await _gettingNotes(state.currentUser!.authId);
   }
 
   showMessage(HomeCode code , {messageType: MessageType.toast}) async {
@@ -33,10 +35,10 @@ class HomeCubit extends Cubit<HomeState>{
     emit(state.copy());
   }
 
-  Future<HomeCode?> _gettingNotes() async {
+  Future<HomeCode?> _gettingNotes(String userId) async {
 
     try{
-      List<NoteItem?> notes = await noteRepository.getNotes();
+      List<NoteItem?> notes = await noteRepository.getNotes(userId);
       if(notes.isEmpty)  {
         showMessage(HomeCode.EmptyNote,messageType: MessageType.toast);
         return HomeCode.EmptyNote;
